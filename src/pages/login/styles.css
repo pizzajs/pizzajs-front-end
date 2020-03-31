@@ -1,16 +1,70 @@
-.container {
-    width: 100%;
+.body , html  {
     height: 100%;
-    margin: 0;
     display: flex;
     background:  url("../../assets/fundo.jpg") no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     
+    position: relative;
+    align-items: center;
+    justify-content: center;
     
 }
-.container form {
-    align-items: center;
-    justify-content: space-between;
-    background: #000;
-    width: 100px;
-    height: 100px;
+.caixaDeCampos{
+    width: 100%;
+    max-width: 350px;
+    background: rgba(245, 245, 245, 0.5);
+    border-radius: 40px;
+    text-align: center;
+    
+}
+.caixaDeCampos form{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.caixaDeCampos form h1{
+    font-weight: bold;
+    padding-top: 25px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
+
+}
+.container form input{
+    width: 80%;
+    height:30px;
+    border-radius: 10px;
+    margin-top: 25px;
+    border: 1px solid #dcdce6;
+    opacity:0.8;
+
+    
+}
+.container form button{
+    margin: 25px;
+    padding: 0px;
+    width: 200px;
+    height: 25px;
+    font: 400 18px Roboto, sans-serif;
+    background: #ED0000;
+    border:none ;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    
+}
+.container form button:hover{
+    opacity: 0.8;
+}
+.caixaDeCampos a{
+    color: #000;
+    font-size: 17px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+}
+
+.caixaDeCampos a:hover{
+    font-weight: bold;
 }
