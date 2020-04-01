@@ -2,10 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 // import {FiLogIn} from 'react-icons/fi';
 
-import styles from './styles.css';
+import Cabecalho from '../cabecalho';
+import './styles.css';
 
 export default function Login() {
     return(
+        
         <div className="container" >
             <section className="caixaDeCampos">
                 <form  onSubmit={()=>{}}>
