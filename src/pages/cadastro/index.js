@@ -1,13 +1,8 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-// import {FiLogIn} from 'react-icons/fi';
+import React from  'react';
 
-import Cabecalho from '../cabecalho';
-import './styles.css';
 
-export default function Login() {
+export default function Cadastro() {
     return(
-        
         <div className="container" >
             <section className="caixaDeCampos">
                 <form  onSubmit={()=>{}}>
@@ -15,10 +10,12 @@ export default function Login() {
                     <input className="campo" type="text" placeholder="E-mail"/>
                     <input className="campo" type="text" placeholder="Senha"/>
                     <button className="botaoVermelho" onClick={()=>{}}>Entrar</button>
-                    <Link className="link" to ="/">Não tenho cadastro 
-    
-                </Link>
+                    
                 </form>
+                <Link className="link" to ="/">
+                    Não tenho cadastro 
+                </Link>
+                
             </section>
         </div>
     );
