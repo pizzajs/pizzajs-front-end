@@ -1,0 +1,58 @@
+
+.caixaPricipal {
+    width: 100%;
+    height: 85vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    display: flex;
+}
+
+.caixaPricipal .caixa {
+    text-align: center;
+    background: rgba(245, 245, 245, 0.5);
+    width: 92%;
+    height: 92%;
+    border-radius: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaPricipal .caixa .aux{
+    display: flex;
+    height: 93%;
+    justify-content: space-between;
+}
+.caixaPricipal .caixa .aux .pizza {
+    margin: 7% auto;
+    /* margin-top: 7%; */
+    width: 45%;
+    height: 90%;
+    
+}
+
+.caixaPricipal .caixa .aux .bebida {
+    background: rgba(245, 245, 245, 0.5);
+    margin: 0 auto;
+    width: 45%;
+    height: 60%;
+    border-radius: 5%;
+    margin-top: 7%;
+}
+
+.caixaPricipal .caixa .aux .pizza .info {
+    padding: 10%;
+    height: 65%;
+    background: rgba(245, 245, 245, 0.5);
+    margin: 0 auto;
+    border-radius: 5%;
+}
+
+.caixaPricipal .caixa .aux .pizza .valor {
+    margin-top: 10%;
+    font-size: 5vh;
+}
+/* .caixaPricipal .caixa .aux .valor{
+    display: block;
+    margin-top: 70%;
+} */
