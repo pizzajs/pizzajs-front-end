@@ -1,2 +1,22 @@
-.cabecalho{     background: rgb(0,0,0,0.7);     height: 15vh;     display: flex;     justify-content: center;     align-items: center;  } 
-.cabecalho div {     display: flex;     align-items: center;     justify-content: center;     height: 15vh; } .cabecalho div img {     height:100%;     width: 15vh;  } .cabecalho div h1 {     color: #fff; }
+.cabecalho{
+    background: rgb(0,0,0,0.7);
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.cabecalho div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;
+}
+.cabecalho div img {
+    height:100%;
+    width: 15vh;
+
+}
+.cabecalho div h1 {
+    color: #fff;
+}
