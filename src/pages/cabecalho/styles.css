@@ -1,6 +1,6 @@
 .cabecalho{
     background: rgb(0,0,0,0.7);
-    height: 15vh;
+    height: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,11 +10,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15vh;
+    height: 15%;
 }
 .cabecalho div img {
     height:100%;
-    width: 15vh;
+    width: 15%;
 
 }
 .cabecalho div h1 {
