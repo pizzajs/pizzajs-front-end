@@ -7,19 +7,16 @@ import './styles.css';
 
 export default function Login() {
     return(
-        
-        <div className="container" >
-            <section className="caixaDeCampos">
-                <form  onSubmit={()=>{}}>
-                    <h1>Seja bem vindo<br/>ao<br/>Pizza js</h1>
-                    <input className="campo" type="text" placeholder="E-mail"/>
-                    <input className="campo" type="text" placeholder="Senha"/>
-                    <button className="botaoVermelho" onClick={()=>{}}>Entrar</button>
-                    <Link className="link" to ="/">Não tenho cadastro 
-    
-                </Link>
-                </form>
-            </section>
-        </div>
+       <div className="containerLogin">
+           <form className="formulario">
+                <h1>Pizza Js</h1>
+                <h1>Login</h1>
+                <input type="text" placeholder="E-mail"/>
+                <input type="password" placeholder="Senha"/>
+                <button>Entrar</button>
+                <Link to="/">Não tenho cadastro</Link>
+           </form>
+
+       </div>
     );
 }
