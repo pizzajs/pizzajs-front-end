@@ -1,7 +1,6 @@
 .produto {
     position: absolute;
     width: 100%;
-    
     height: 100%;
     margin-top:0;
     padding: 0;
@@ -10,6 +9,93 @@
     justify-content: center;
 }
 
-.header {
-    margin-top: 0;
+.produto .caixaPricipal {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: auto;
+    height: 80%;
+    width: 90%;
+    border-radius: 3%;
+    margin-top: 4%;
+    padding-top: 3%;
 }
+
+.produto .caixaPricipal .caixas {
+    display: flex;
+    height: 90%;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 8%;
+    margin-left: 5%;
+}
+
+ .produto .caixaPricipal .caixas .caixapizza{
+    height: 90%;
+    width: 40%;
+} 
+
+.produto .caixaPricipal .caixas .caixabebida{
+    height: 90%;
+    width: 40%;
+} 
+
+.produto .caixaPricipal .caixas .caixapizza .valortotal{
+   margin-top: 30%;
+}
+
+.produto .caixaPricipal .caixas .caixapizza .pizzas{
+    height: 50%;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5%;
+    overflow-y: scroll;
+    
+} 
+
+.produto .caixaPricipal .caixas .caixapizza .pizzas::-webkit-scrollbar {
+    display: none;
+}     
+
+.produto .caixaPricipal .caixas .caixabebida .redbotao{
+   margin-top: 30%;
+}
+
+ .produto .caixaPricipal .caixas .caixabebida .bebida{
+    height: 50%;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5%;
+    overflow-y: scroll;
+} 
+
+.produto .caixaPricipal .caixas .caixabebida .bebida::-webkit-scrollbar {
+    display: none;
+}     
+
+
+.produto .caixaPricipal .caixas .caixapizza .pizzas ul{
+    margin-top: 5%;
+}
+
+.produto .caixaPricipal .caixas .caixapizza .pizzas li{
+    list-style: none;
+    margin-top: 2%;
+}
+
+.produto .caixaPricipal .caixas .caixabebida .bebida ul{
+    margin-top: 5%;
+}
+
+.produto .caixaPricipal .caixas .caixabebida .bebida li{
+    list-style: none;
+    margin-top: 2%;
+}
+
+
+/* 
+
+.produto .caixaPricipal .caixas .caixapizza .pizzas{
+    height: 50%;
+    overflow: auto;
+    scrollbar-width: 0px;
+    background-color: brown;
+} */ 
