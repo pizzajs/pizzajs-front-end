@@ -6,19 +6,23 @@ import { MdArrowBack } from "react-icons/md";
 
 export default function Cadastro() {
     return(
-        <div className="cadastro">
+        <div >
             <div className="header">
                 <Cabecalho />
             </div>
-            <div className="caixaprincipal">
-                <h1>Pizza js</h1>
-                <input type="text" placeholder="Nome"/>
-                <input type="email" placeholder="E-mail"/>
-                <input type="tel" placeholder="Telefone"/>
-                <input type="password" placeholder="Senha"/>
-                <input type="password" placeholder="Confirmar Senha"/>
-                <button>Cadastrar</button>
-                <MdArrowBack />
+            <div className="cadastro">
+                <div className="caixaprincipal">
+                    <h1 className="titulo"> Pizza js</h1>
+                    <input type="text" placeholder="Nome" className="input"/>
+                    <input type="email" placeholder="E-mail" className="input"/>
+                    <input type="tel" placeholder="Telefone" className="input"/>
+                    <input type="password" placeholder="Senha" className="input"/>
+                    <input type="password" placeholder="Confirmar Senha" className="input"/>
+                    <button className="botaovermelho">Cadastrar</button>
+                    <div>
+                    <MdArrowBack className="iconevoltar"/>
+                    </div>
+                </div>
             </div>
         </div>
     );
