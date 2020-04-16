@@ -1,0 +1,83 @@
+.bebida {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    justify-content: space-between;
+}
+
+.bebida .caixaesquerda {
+    width: 35%;
+    height: 60%;
+    margin-left: 5%;
+    margin-top: 10%;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5%;
+    overflow-y: scroll;
+}
+
+.bebida .caixaesquerda::-webkit-scrollbar {
+    display: none;
+}     
+
+.bebida .caixadireita {
+    background-color: lawngreen;
+    width: 35%;
+    height: 60%;
+    margin-right: 5%;
+    margin-top: 10%;
+}
+
+.bebida .caixaesquerda .titulo {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 300%;
+}
+
+.bebida .caixaesquerda .bebidas {
+    margin-top: 10%;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 150%;
+}
+
+.bebida .caixaesquerda .bebidas .nomebebidas{
+    list-style: none;
+    margin-top: 3%;
+    display: flex;
+    margin-left: 20%;
+    font-size: 130%;
+}
+
+.bebida .caixadireita .valor {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 300%;
+    color: #FFFF;
+}
+
+.bebida .caixadireita .botoes {
+    display: inline-block;
+    background-color: lightsalmon;
+    margin-top: 50%;
+}
+/* 
+.bebida .caixadireita .botoes .botaopizza {
+
+}
+
+.bebida .caixadireita .botoes .botaofinalizar {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 200%;
+    text-align: center;
+    background-color: #ED0000 ;
+    border-color: #ED0000;
+    color: #FFFF;
+    height: 10%;
+    width: 50%;
+    border-radius: 4%;
+    font-weight: bold;
+} */

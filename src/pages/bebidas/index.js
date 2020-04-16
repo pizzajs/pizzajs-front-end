@@ -9,19 +9,31 @@ export default function Bebida() {
             <div className="cabecalho">
                 <Cabecalho />
             </div>
-            <div className="caixaesquerda">
-                <h1 className="titulo">Bebidas</h1>
-                <ul>
-                    <li className="bebidas">Coca-cola</li>
-                    <li className="bebidas">Guarana</li>
-                    <li className="bebidas">Sprit</li>
-                    <li className="bebidas">Fanta</li>
-                </ul>
-            </div>
-            <div className="caixadireita">
-                <h1 className="valor">Valor Total: R$ 72,38</h1>
-                <button className="pizza">Adicionar pizza</button>
-                <button className="finalizar">Finalizar Pedido</button>
+            <div className="bebida">
+                <div className="caixaesquerda">
+                    <h1 className="titulo">Bebidas</h1>
+                    <ul className="bebidas">
+                        <li className="nomebebidas">Coca-cola</li>
+                        <li className="nomebebidas">Guarana</li>
+                        <li className="nomebebidas">Sprit</li>
+                        <li className="nomebebidas">Fanta</li>
+                        <li className="nomebebidas">Coca-cola</li>
+                        <li className="nomebebidas">Guarana</li>
+                        <li className="nomebebidas">Sprit</li>
+                        <li className="nomebebidas">Fanta</li>
+                        <li className="nomebebidas">Coca-cola</li>
+                        <li className="nomebebidas">Guarana</li>
+                        <li className="nomebebidas">Sprit</li>
+                        <li className="nomebebidas">Fanta</li>
+                    </ul>
+                </div>
+                <div className="caixadireita">
+                    <h1 className="valor">Valor Total: R$ 72,38</h1>
+                    <div className="botoes">
+                        <button className="botaopizza">Adicionar pizza</button>
+                        <button className="botaofinalizar">Finalizar Pedido</button>
+                    </div>
+                </div>
             </div>
         </div>
     );
