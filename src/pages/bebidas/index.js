@@ -2,6 +2,7 @@ import React from 'react';
 
 import Cabecalho from '../cabecalho';
 import './styles.css';
+import Checkbox from '../../utils/checkbox';
 
 export default function Bebida() {
     return (
@@ -13,18 +14,18 @@ export default function Bebida() {
                 <div className="caixaesquerda">
                     <h1 className="titulo">Bebidas</h1>
                     <ul className="bebidas">
-                        <li className="nomebebidas">Coca-cola</li>
-                        <li className="nomebebidas">Guarana</li>
-                        <li className="nomebebidas">Sprit</li>
-                        <li className="nomebebidas">Fanta</li>
-                        <li className="nomebebidas">Coca-cola</li>
-                        <li className="nomebebidas">Guarana</li>
-                        <li className="nomebebidas">Sprit</li>
-                        <li className="nomebebidas">Fanta</li>
-                        <li className="nomebebidas">Coca-cola</li>
-                        <li className="nomebebidas">Guarana</li>
-                        <li className="nomebebidas">Sprit</li>
-                        <li className="nomebebidas">Fanta</li>
+                        <li className="nomebebidas"> <Checkbox className="checkbox" Item="Coca-cola" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Sprit" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Fanta" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Coca-cola" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Sprit" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Fanta" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Coca-cola" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Sprit" /> </li>
+                        <li className="nomebebidas"> <Checkbox Item="Fanta" /> </li>
                     </ul>
                 </div>
                 <div className="caixadireita">
