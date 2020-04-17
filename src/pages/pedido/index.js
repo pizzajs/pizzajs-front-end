@@ -1,9 +1,10 @@
 import React from 'react';
 
-
+import { MdDelete } from "react-icons/md";
 import './styles.css';
-import Cabecalho from '../cabecalho/index'
+import Cabecalho from '../cabecalho/index';
 
+MdDelete
 export default function Pedido() {
 
     return (    
@@ -19,21 +20,19 @@ export default function Pedido() {
                         <div className="pizzas">
                             <h1>Pizzas</h1>
                             <ul>
-                                <li>minha pizza</li>
-                                <li>calabresa</li>
-                                <li>mussarela</li>
-                                <li>minha pizza</li>
-                                <li>calabresa</li>
-                                <li>mussarela</li>  
-                                <li>minha pizza</li>
-                                <li>calabresa</li>
-                                <li>mussarela</li>  
-                                <li>minha pizza</li>
-                                <li>calabresa</li>
-                                <li>mussarela</li>  
-                                <li>minha pizza</li>
-                                <li>calabresa</li>
-                                <li>mussarela</li>                        
+                                <li>minha pizza <MdDelete className="lixeira" /></li>
+                                <li>calabresa <MdDelete className="lixeira" /></li>
+                                <li>mussarela <MdDelete className="lixeira" /></li>
+                                <li>minha pizza <MdDelete className="lixeira" /></li>
+                                <li>calabresa <MdDelete className="lixeira" /></li>
+                                <li>mussarela <MdDelete className="lixeira" /></li>
+                                <li>minha pizza <MdDelete className="lixeira" /></li>
+                                <li>calabresa <MdDelete className="lixeira" /></li>
+                                <li>mussarela <MdDelete className="lixeira" /></li>
+                                <li>minha pizza <MdDelete className="lixeira" /></li>
+                                <li>calabresa <MdDelete className="lixeira" /></li>
+                                <li>mussarela <MdDelete className="lixeira" /></li>
+                                                   
                             </ul>
                         </div> 
                         <h1 className="valortotal">Valor total: 53,72</h1>
@@ -42,27 +41,18 @@ export default function Pedido() {
                         <div className="bebida">
                             <h1>Bebidas</h1>
                             <ul>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
-                                <li>coca-cola</li>
-                                <li>guarana</li>
-                                <li>fanta</li>
+                                <li>coca-cola <MdDelete className="lixeira" /></li>
+                                <li>guarana <MdDelete className="lixeira" /></li>
+                                <li>fanta <MdDelete className="lixeira" /></li>
+                                <li>coca-cola <MdDelete className="lixeira" /></li>
+                                <li>guarana <MdDelete className="lixeira" /></li>
+                                <li>fanta <MdDelete className="lixeira" /></li>
+                                <li>coca-cola <MdDelete className="lixeira" /></li>
+                                <li>guarana <MdDelete className="lixeira" /></li>
+                                <li>fanta <MdDelete className="lixeira" /></li>
+                                <li>coca-cola <MdDelete className="lixeira" /></li>
+                                <li>guarana <MdDelete className="lixeira" /></li>
+                                <li>fanta <MdDelete className="lixeira" /></li>                                
                             </ul>
                         </div>
                         <button className="redbotao">Finalizar pedido</button>

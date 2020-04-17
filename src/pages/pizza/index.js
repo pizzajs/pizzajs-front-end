@@ -55,7 +55,11 @@ class Pizza extends React.Component{
                         </div>
 
                     </div>
-
+                    <div className="direita">
+                        <h1>Valor R$: 35,00 </h1>
+                        <button className="botaoBebida">Adiocionar bebida</button>
+                        <button className="botaoFinalizar">Finalizar pedido</button>
+                    </div>
                 </div>
                 
            </div>

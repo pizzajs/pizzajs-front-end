@@ -1,22 +1,29 @@
 import React from  'react';
 
+import './styles.css';
+import Cabecalho from '../cabecalho/index';
+import { MdArrowBack } from "react-icons/md";
 
 export default function Cadastro() {
     return(
-        <div className="container" >
-            <section className="caixaDeCampos">
-                <form  onSubmit={()=>{}}>
-                    <h1>Seja bem vindo<br/>ao<br/>Pizza js</h1>
-                    <input className="campo" type="text" placeholder="E-mail"/>
-                    <input className="campo" type="text" placeholder="Senha"/>
-                    <button className="botaoVermelho" onClick={()=>{}}>Entrar</button>
-                    
-                </form>
-                <Link className="link" to ="/">
-                    Não tenho cadastro 
-                </Link>
-                
-            </section>
+        <div >
+            <div className="header">
+                <Cabecalho />
+            </div>
+            <div className="cadastro">
+                <div className="caixaprincipal">
+                    <h1 className="titulo"> Pizza js</h1>
+                    <input type="text" placeholder="Nome" className="input"/>
+                    <input type="email" placeholder="E-mail" className="input"/>
+                    <input type="tel" placeholder="Telefone" className="input"/>
+                    <input type="password" placeholder="Senha" className="input"/>
+                    <input type="password" placeholder="Confirmar Senha" className="input"/>
+                    <button className="botaovermelho">Cadastrar</button>
+                    <div>
+                    <MdArrowBack className="iconevoltar"/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

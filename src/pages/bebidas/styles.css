@@ -1,0 +1,86 @@
+.bebida {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bebida .caixaesquerda {
+    width: 35%;
+    height: 60%;
+    margin-left: 5%;
+    margin-top: 10%;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5%;
+    overflow-y: scroll;
+}
+
+.bebida .caixaesquerda::-webkit-scrollbar {
+    display: none;
+}     
+
+.bebida .caixadireita {
+    width: 35%;
+    height: 60%;
+    margin-right: 5%;
+    margin-top: 10%;
+    padding: 1%;
+}
+
+.bebida .caixaesquerda .titulo {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 300%;
+}
+
+.bebida .caixaesquerda .bebidas {
+    margin-top: 10%;
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 150%;
+}
+
+.bebida .caixadireita .valor {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 300%;
+    color: #FFFF;
+}
+
+.bebida .caixadireita .botoes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 40%;
+}
+
+
+.bebida .caixadireita .botoes .botaopizza {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 200%;
+    background-color: #FFD800 ;
+    border-color:#FFD800;
+    color: #050505;
+    height: 10%;
+    width: 70%;
+    border-radius: 4%;
+    font-weight: bold;
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
+.bebida .caixadireita .botoes .botaofinalizar {
+    font-family: 'Reem Kufi', sans-serif;
+    font-size: 200%;
+    background-color: #ED0000 ;
+    border-color: #ED0000;
+    color: #FFFF;
+    height: 10%;
+    width: 70%;
+    border-radius: 4%;
+    font-weight: bold;
+    margin-left: 15%;
+    margin-top: 5%;
+}

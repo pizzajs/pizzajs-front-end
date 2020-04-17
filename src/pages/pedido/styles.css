@@ -80,7 +80,6 @@
     display: none;
 }     
 
-
 .produto .caixaPricipal .caixas .caixapizza .pizzas ul{
     margin-top: 5%;
     font-family: 'Reem Kufi', sans-serif;
@@ -89,6 +88,16 @@
 
 .produto .caixaPricipal .caixas .caixapizza .pizzas li{
     list-style: none;
+    margin-top: 2%;
+    display: flex;
+    margin-left: 25%;
+    justify-content: space-between;
+    font-size: 130%;
+    
+}
+
+.produto .caixaPricipal .caixas .caixapizza .pizzas li .lixeira{
+    margin-right: 50%;
     margin-top: 2%;
 }
 
@@ -101,11 +110,21 @@
 .produto .caixaPricipal .caixas .caixabebida .bebida li{
     list-style: none;
     margin-top: 2%;
+    display: flex;
+    margin-left: 25%;
+    justify-content: space-between;
+    font-size: 130%;
+}
+
+.produto .caixaPricipal .caixas .caixabebida .bebida li .lixeira{
+    margin-right: 50%;
+    margin-top: 2%;
 }
 
 .produto .caixaPricipal .caixas .caixabebida .redbotao {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 200%;
+    text-align: center;
     background-color: #ED0000 ;
     border-color: #ED0000;
     color: #FFFF;
