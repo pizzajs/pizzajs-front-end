@@ -20,3 +20,10 @@ html {
     padding:0;
     height: 100%;
 }
+
+button:hover{
+    cursor: pointer;
+}
+.li{
+    list-style: none;
+}
