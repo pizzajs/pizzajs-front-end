@@ -8,6 +8,8 @@ import Cadastro from   './pages/cadastro';
 import Pedido from './pages/pedido';
 import Produto from './pages/produto';
 import Bebida from './pages/bebidas';
+import Home from './pages/home';
+
 
 export default function Routes() {
     return(
@@ -19,6 +21,7 @@ export default function Routes() {
                 <Route path="/pedido" component={Pedido} />
                 <Route path="/produto"  component={Produto}/>
                 <Route path="/bebida" component={Bebida} />
+                <Route path="/home" component={Home} />
             </Switch>
         </BrowserRouter>
     );
