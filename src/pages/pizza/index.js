@@ -36,6 +36,12 @@ class Pizza extends React.Component{
                                     <li className="li"><input type="checkbox"/>Catupiry</li>
                                     <li className="li"><input type="checkbox"/>Normal</li>
                                     <li className="li"><input type="checkbox"/>Catupiry</li>
+                                    <li className="li"><input type="checkbox"/>Normal</li>
+                                    <li className="li"><input type="checkbox"/>Catupiry</li>
+                                    <li className="li"><input type="checkbox"/>Normal</li>
+                                    <li className="li"><input type="checkbox"/>Catupiry</li>
+                                    <li className="li"><input type="checkbox"/>Normal</li>
+                                    <li className="li"><input type="checkbox"/>Catupiry</li>
                                 </ul>
                                 
                             </div>
@@ -49,6 +55,15 @@ class Pizza extends React.Component{
                                     <li className="li"><input type="checkbox"/>Mussarela</li>
                                     <li className="li"><input type="checkbox"/>Bacon</li>
                                     <li className="li"><input type="checkbox"/>Ovo</li>
+                                    <li className="li"><input type="checkbox"/>Calabresa</li>
+                                    <li className="li"><input type="checkbox"/>Mussarela</li>
+                                    <li className="li"><input type="checkbox"/>Bacon</li>
+                                    <li className="li"><input type="checkbox"/>Ovo</li>
+                                    <li className="li"><input type="checkbox"/>Calabresa</li>
+                                    <li className="li"><input type="checkbox"/>Mussarela</li>
+                                    <li className="li"><input type="checkbox"/>Bacon</li>
+                                    <li className="li"><input type="checkbox"/>Ovo</li>
+                                    
                                 </ul>
                                 
                             </div>
