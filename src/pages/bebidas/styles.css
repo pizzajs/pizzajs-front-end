@@ -1,4 +1,4 @@
-.bebida {
+.caixabebidas {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.bebida .caixaesquerda {
+.caixabebidas .caixaesquerda {
     width: 35%;
     height: 60%;
     margin-left: 5%;
@@ -20,11 +20,11 @@
     overflow-y: scroll;
 }
 
-.bebida .caixaesquerda::-webkit-scrollbar {
+.caixabebidas .caixaesquerda::-webkit-scrollbar {
     display: none;
 }     
 
-.bebida .caixadireita {
+.caixabebidas .caixadireita {
     width: 35%;
     height: 60%;
     margin-right: 5%;
@@ -32,24 +32,25 @@
     padding: 1%;
 }
 
-.bebida .caixaesquerda .titulo {
+.caixabebidas .caixaesquerda .titulobebida {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 300%;
 }
 
-.bebida .caixaesquerda .bebidas {
+.caixabebidas .caixaesquerda .bebidas {
     margin-top: 10%;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 150%;
+    list-style: none;
 }
 
-.bebida .caixadireita .valor {
+.caixabebidas .caixadireita .valor {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 300%;
     color: #FFFF;
 }
 
-.bebida .caixadireita .botoes {
+.caixabebidas .caixadireita .botoes {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -57,7 +58,7 @@
 }
 
 
-.bebida .caixadireita .botoes .botaopizza {
+.caixabebidas .caixadireita .botoes .botaopizza {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 200%;
     background-color: #FFD800 ;
@@ -71,7 +72,7 @@
     margin-top: 5%;
 }
 
-.bebida .caixadireita .botoes .botaofinalizar {
+.caixabebidas .caixadireita .botoes .botaofinalizar {
     font-family: 'Reem Kufi', sans-serif;
     font-size: 200%;
     background-color: #ED0000 ;

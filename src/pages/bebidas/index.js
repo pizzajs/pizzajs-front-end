@@ -10,9 +10,9 @@ export default function Bebida() {
             <div className="cabecalho">
                 <Cabecalho />
             </div>
-            <div className="bebida">
+            <div className="caixabebidas">
                 <div className="caixaesquerda">
-                    <h1 className="titulo">Bebidas</h1>
+                    <h1 className="titulobebida">Bebidas</h1>
                     <ul className="bebidas">
                         <li className="nomebebidas"> <Checkbox className="checkbox" Item="Coca-cola" /> </li>
                         <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
