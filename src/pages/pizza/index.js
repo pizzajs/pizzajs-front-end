@@ -1,5 +1,5 @@
 import React from 'react';
-import Cabecalho from '../cabecalho';
+import Cabecalho from '../../utils/cabecalho';
 import './style.css';
 import Checkbox from '../../utils/checkbox';
 

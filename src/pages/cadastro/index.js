@@ -1,7 +1,7 @@
 import React from  'react';
 
 import './styles.css';
-import Cabecalho from '../cabecalho/index';
+import Cabecalho from '../../utils/cabecalho/index';
 import { MdArrowBack } from "react-icons/md";
 
 export default function Cadastro() {

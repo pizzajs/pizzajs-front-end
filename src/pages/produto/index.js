@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Cabecalho from '../cabecalho';
+import Cabecalho from '../../utils/cabecalho';
 import imgPizza from '../../assets/pizza.jpg';
 import './style.css';
 class Produto extends React.Component {
@@ -38,17 +38,7 @@ class Produto extends React.Component {
                                 <li>Cebola</li>
                                 <li>Cebola</li>
                                 <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
-                                <li>Cebola</li>
+
                             </ul>
                             </div>
                             <div className="itensBotoes">

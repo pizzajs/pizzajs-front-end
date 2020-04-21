@@ -137,3 +137,143 @@
 .produto .caixaPricipal .caixas .caixabebida .redbotao:hover{
     opacity: 0.8;
 }
+
+
+@media screen and (max-width: 1351px){
+    .produto {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin-top:0;
+        padding: 0;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .produto .caixaPricipal {
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: auto;
+        height: 80%;
+        width: 90%;
+        border-radius: 15px;
+        margin-top: 15px;
+        padding-top: 3%;
+    }
+    
+    .produto .caixaPricipal .titulo {
+        font-family: 'Reem Kufi', sans-serif;
+        font-size: 300%;
+    }
+    
+    .produto .caixaPricipal .caixas {
+        display: flex;
+        height: 90%;
+        width: 90%;
+        justify-content: space-between;
+        margin-top: 4%;
+        margin-left: 5%;
+    }
+    
+     .produto .caixaPricipal .caixas .caixapizza{
+        height: 90%;
+        width: 40%;
+    } 
+    
+    .produto .caixaPricipal .caixas .caixabebida{
+        height: 90%;
+        width: 40%;
+    } 
+    
+    .produto .caixaPricipal .caixas .caixapizza .valortotal{
+       margin-top: 20%;
+       font-family: 'Reem Kufi', sans-serif;
+       /* font-size: 300%; */
+    }
+    
+    .produto .caixaPricipal .caixas .caixapizza .pizzas{
+        height: 50%;
+        width: 90%;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 5%;
+        overflow-y: scroll;
+        
+    } 
+    
+    .produto .caixaPricipal .caixas .caixapizza .pizzas::-webkit-scrollbar {
+        display: none;
+    }     
+    
+    .produto .caixaPricipal .caixas .caixabebida .redbotao{
+       margin-top: 20%;
+    }
+    
+     .produto .caixaPricipal .caixas .caixabebida .bebida{
+        height: 50%;
+        width: 90%;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 5%;
+        overflow-y: scroll;
+    } 
+    
+    .produto .caixaPricipal .caixas .caixabebida .bebida::-webkit-scrollbar {
+        display: none;
+    }     
+    
+    .produto .caixaPricipal .caixas .caixapizza .pizzas ul{
+        margin-top: 5%;
+        font-family: 'Reem Kufi', sans-serif;
+        font-size: 150%;
+    }
+    
+    .produto .caixaPricipal .caixas .caixapizza .pizzas li{
+        list-style: none;
+        margin-top: 2%;
+        display: flex;
+        margin-left: 25%;
+        justify-content: space-between;
+        font-size: 130%;
+        
+    }
+    
+    .produto .caixaPricipal .caixas .caixapizza .pizzas li .lixeira{
+        margin-right: 50%;
+        margin-top: 2%;
+    }
+    
+    .produto .caixaPricipal .caixas .caixabebida .bebida ul{
+        margin-top: 5%;
+        /* font-family: 'Reem Kufi', sans-serif; */
+        /* font-size: 150%; */
+    }
+    
+    .produto .caixaPricipal .caixas .caixabebida .bebida li{
+        list-style: none;
+        margin-top: 2%;
+        display: flex;
+        margin-left: 25%;
+        justify-content: space-between;
+        /* font-size: 130%; */
+    }
+/*     
+    .produto .caixaPricipal .caixas .caixabebida .bebida li .lixeira{
+        margin-right: 50%;
+        margin-top: 2%;
+    }  */
+    
+    .produto .caixaPricipal .caixas .caixabebida .redbotao {
+        font-family: 'Reem Kufi', sans-serif;
+        font-size: 200%;
+        text-align: center;
+        background-color: #ED0000 ;
+        border-color: #ED0000;
+        color: #FFFF;
+        height: 15%;
+        width: 60%;
+        border-radius: 4%;
+        font-weight: bold;
+    }
+    
+    .produto .caixaPricipal .caixas .caixabebida .redbotao:hover{
+        opacity: 0.8;
+    }
+}

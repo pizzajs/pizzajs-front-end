@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './styles.css';
-import Cabecalho from '../cabecalho/index';
+import Cabecalho from '../../utils/cabecalho/index';
 import imgPizza from '../../assets/pizza.jpg';
 
 export default function Home() {

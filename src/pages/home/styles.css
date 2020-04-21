@@ -46,11 +46,9 @@
     width: 100%;
     height: 80%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    
+    grid-template-columns: 1fr 1fr 1fr 1fr;  
     margin-top: 1%;
-    
-    /* background-color: brown; */
+
 }
 .paginainicial .pizzasprontas .caixapizza .imagem{
     border-radius: 5px;

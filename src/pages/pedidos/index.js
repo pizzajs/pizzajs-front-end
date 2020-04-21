@@ -1,5 +1,5 @@
 import React from 'react';
-import Cabecalho from '../cabecalho';
+import Cabecalho from '../../utils/cabecalho';
 
 import './styles.css';
 
@@ -10,7 +10,7 @@ class Pedidos extends React.Component{
                 <header className="header">
                     <Cabecalho/>
                 </header>
-                <div className="titulo">
+                <div className="titulopedidos">
                     <h1>Todos os pedidos</h1>
                 </div>
                 <ul className="todosPedidos">
