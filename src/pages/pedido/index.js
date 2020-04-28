@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 import './styles.css';
 import Cabecalho from '../../utils/cabecalho/index';
 
-MdDelete
+// MdDelete
 export default function Pedido() {
 
     return (    

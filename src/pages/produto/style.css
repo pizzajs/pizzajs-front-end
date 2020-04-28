@@ -1,7 +1,6 @@
 .produto{
     position: absolute;
     width: 100%;
-    
     height: 100%;
     margin-top:0;
     padding: 0;
@@ -110,8 +109,6 @@
     align-items: center;
     justify-content: center;
     padding-top:5%;
-
-    
 }
 
 .itensBotoes button{
@@ -136,4 +133,146 @@ button:hover{
     margin-top: 5%;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 150%;
+}
+
+
+@media screen and (max-width: 1351px){
+    .produto{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin-top:0;
+        padding: 0;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .produto header{
+        margin-top: 0;
+    }
+    
+    .produto .produtoInfo{
+        background:rgba(255, 255, 255, 0.5);
+        margin: 0 auto;
+        height: 70%;
+        width: 80%;
+        border-radius: 5%;
+        margin-top: 5%;
+    }
+    
+    .produto .produtoInfo .info{
+        width: 100%;
+        height:100%;
+        display:grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto;
+        padding: 10px;
+    }
+    
+    .produto .produtoInfo h1{
+       font-size: 3vw;
+    }
+    
+    .produto .produtoInfo .info .caixaEsquerda{
+        padding: 0;
+        height: 90%;
+        width: 100%;
+    }
+    
+    .produto .produtoInfo .info .caixaEsquerda h1{
+        text-align: center;
+        font-size: 3vw;
+    }
+    
+    .produto .produtoInfo .info .caixaEsquerda button{
+        margin-top: 5px;
+        min-height: 40px;
+        max-height: 50px;
+        font-size: 100%;
+        color: #fff;
+        font-weight: bold;
+        background-color: #ED0000 ;
+        border-color: #ED0000;
+        border-radius: 10px;
+        margin-left: 5px;
+    }
+    
+    .produto .produtoInfo .info .caixaEsquerda .imagem{
+        border-radius: 5px;
+        width: 70%;
+        max-width: 250px;
+        max-height: 250px;
+        height: 70%;
+        padding: 0;
+        margin: 0 auto;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        height: 70%;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita .ingredientes{
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
+        margin-top: 0;
+        background:rgba(255, 255, 255, 0.5);
+        border-radius: 5px;
+        width: 70%;
+        height: 70%;
+        overflow: auto;
+        scrollbar-width: 0px;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita .ingredientes::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita .ingredientes li{
+        list-style: none;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita .ingredientes h1{
+        margin-top:0;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita .ingredientes .itensBotoes{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top:5%;
+    
+        
+    }
+    
+    .itensBotoes button{
+        margin-top: 10px;
+        width: 35%;
+        min-height: 35px;
+        max-height: 45px;
+        font-size: 100%;
+        color: #fff;
+        font-weight: bold;
+        background-color: #ED0000 ;
+        border-color: #ED0000;
+        border-radius: 10px;
+        margin-left: 5px;
+    }
+    
+    button:hover{
+        opacity: 0.9;
+    }
+    
+    .produto .produtoInfo .info .caixaDireita .ingredientes ul{
+        margin-top: 5%;
+        font-family: 'Reem Kufi', sans-serif;
+        font-size: 150%;
+    }
+
 }
