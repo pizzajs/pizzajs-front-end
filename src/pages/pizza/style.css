@@ -1,7 +1,6 @@
 .produto{
     position: absolute;
     width: 100%;
-    
     height: 100%;
     margin-top:0;
     padding: 0;
@@ -15,7 +14,6 @@
 .produto .info{
     display: grid;
     grid-template-columns: auto auto;
-    /* background: #fff; */
     width: 100%;
     height: 89%;
     margin-top: 0px;
@@ -24,15 +22,10 @@
 .produto .info .esquerda{
     height: 100%;
     width: 100%;
-    /* background: blue; */
-    /* border: 5px solid; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center
-    /* text-align: center;
-    align-items: center;
-    justify-content: center; */
 }
 
 .produto .info .esquerda .massa{
