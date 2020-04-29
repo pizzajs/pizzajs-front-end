@@ -1,5 +1,6 @@
 import createSagaMiddleware from 'redux-saga';
 import createStore from './createStore';
+import 'babel-polyfill';
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';

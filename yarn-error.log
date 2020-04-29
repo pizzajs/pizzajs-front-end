@@ -1,20 +1,25 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add redux-saga react-redux
+  /usr/bin/node /usr/share/yarn/bin/yarn.js
 
 PATH: 
-  /home/joao/Android/Sdk/tools:/home/joao/Android/Sdk/platform-tools:/home/joao/bin:/home/joao/.local/bin:/home/joao/Android/Sdk/tools:/home/joao/Android/Sdk/platform-tools:/home/joao/bin:/home/joao/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/moacir/.rbenv/plugins/ruby-build/bin:/home/moacir/.rbenv/shims:/home/moacir/.rbenv/bin:/home/moacir/.rbenv/plugins/ruby-build/bin:/home/moacir/.rbenv/shims:/home/moacir/.rbenv/bin:/home/moacir/bin:/home/moacir/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 
 Yarn version: 
   1.21.1
 
 Node version: 
-  12.16.1
+  10.19.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/joao/Documentos/pizzajs-front-end/node_modules/react-icons/LICENSE'
+  SyntaxError: /home/moacir/Documentos/pizzajs-front-end/package.json: Unexpected token / in JSON at position 818
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -29,7 +34,6 @@ npm manifest:
       "start": "webpack-dev-server --mode development"
     },
     "devDependencies": {
-      "@babel/core": "^7.9.0",
       "@babel/plugin-proposal-class-properties": "^7.8.3",
       "@babel/preset-env": "^7.9.0",
       "@babel/preset-react": "^7.9.4",
@@ -43,7 +47,9 @@ npm manifest:
     "dependencies": {
       "@rocketseat/unform": "^1.6.2",
       "@unform/core": "^2.1.0",
+      "@babel/core": "^7.9.0",
       "babel-loader": "^8.1.0",
+      // "babel-polyfill": "^6.26.0",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
       "react-icons": "^3.9.0",
@@ -980,11 +986,6 @@ Lockfile:
     dependencies:
       dot-object "^2.1.2"
   
-  "@unform/web@^2.1.0":
-    version "2.1.0"
-    resolved "https://registry.yarnpkg.com/@unform/web/-/web-2.1.0.tgz#32726771f763d3a55e71908109a3b7a42845a2be"
-    integrity sha512-hdfkgE+91ca1iD9yddwEjKYNfms5EA2jf2zFDGTzDkGrxAUwVXoD5XDHyH/6h2U4r84iERlklrR0mTg5rAYa1w==
-  
   "@webassemblyjs/ast@1.9.0":
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -1321,6 +1322,23 @@ Lockfile:
     integrity sha512-o6qFkpeQEBxcqt0XYlWzAVxNCSCZdUgcR8IRlhD/8DylxjjO4foPcvTW0GGKa/cVt3rvxZ7o5ippJ+/0nvLhlQ==
     dependencies:
       object.assign "^4.1.0"
+  
+  babel-polyfill@^6.26.0:
+    version "6.26.0"
+    resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+    integrity sha1-N5k3q8Z9eJWXCtxiHyhM2WbPIVM=
+    dependencies:
+      babel-runtime "^6.26.0"
+      core-js "^2.5.0"
+      regenerator-runtime "^0.10.5"
+  
+  babel-runtime@^6.26.0:
+    version "6.26.0"
+    resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+    integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+    dependencies:
+      core-js "^2.4.0"
+      regenerator-runtime "^0.11.0"
   
   balanced-match@^1.0.0:
     version "1.0.0"
@@ -1812,6 +1830,11 @@ Lockfile:
     dependencies:
       browserslist "^4.8.3"
       semver "7.0.0"
+  
+  core-js@^2.4.0, core-js@^2.5.0:
+    version "2.6.11"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
+    integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
   
   core-util-is@~1.0.0:
     version "1.0.2"
@@ -4243,6 +4266,16 @@ Lockfile:
     version "1.4.0"
     resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
     integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
+  
+  regenerator-runtime@^0.10.5:
+    version "0.10.5"
+    resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+    integrity sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
+  
+  regenerator-runtime@^0.11.0:
+    version "0.11.1"
+    resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+    integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
   
   regenerator-runtime@^0.13.4:
     version "0.13.5"

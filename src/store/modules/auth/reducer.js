@@ -1,4 +1,4 @@
-const inicial_state = {valor:'funcionando reducer'};
+const inicial_state = "funcionou";
 
 export default function auth(state= inicial_state, actions){
     switch(actions.type) {
