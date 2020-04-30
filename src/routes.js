@@ -1,6 +1,8 @@
 import React from 'react';
 
-import {BrowserRouter, Route, Switch } from  'react-router-dom';
+import {BrowserRouter, Switch } from  'react-router-dom';
+
+import RouteWrapper from './Route';
 
 import Login from './pages/login';
 import Cadastro from   './pages/cadastro';
@@ -15,15 +17,14 @@ export default function Routes() {
     return(
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Login} />
-                <Route path="/pizza"  component={Pizza}/>
-                <Route path="/cadastro"  component={Cadastro}/>
-                <Route path="/pedido" component={Pedido} />
-                <Route path="/produto"  component={Produto}/>
-                <Route path="/bebida" component={Bebida} />
-                <Route path="/home" component={Home} />
-                <Route path="/pedidos" component={Pedidos} />
-
+                <RouteWrapper path="/" exact component={Login} />
+                <RouteWrapper path="/pizza"  component={Pizza} isPrivate/>
+                <RouteWrapper path="/cadastro"  component={Cadastro} />
+                <RouteWrapper path="/pedido" component={Pedido} isPrivate/>
+                <RouteWrapper path="/produto"  component={Produto} isPrivate/>
+                <RouteWrapper path="/bebida" component={Bebida} isPrivate/>
+                <RouteWrapper path="/home" component={Home} isPrivate/>
+                <RouteWrapper path="/pedidos" component={Pedidos} isPrivate/>
             </Switch>
         </BrowserRouter>
     );
