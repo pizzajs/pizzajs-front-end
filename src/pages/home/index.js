@@ -3,8 +3,10 @@ import React from 'react';
 import './styles.css';
 import Cabecalho from '../../utils/cabecalho/index';
 import imgPizza from '../../assets/pizza.jpg';
+import api from '../../services/api';
 
 export default function Home() {
+    api.get('ingredientes');
     return(
         <div>
             <Cabecalho />

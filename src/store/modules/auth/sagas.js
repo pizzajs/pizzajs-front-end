@@ -17,6 +17,8 @@ export function* login({payload}){
         const { token, user } = response.data;
 
         yield put(loginSuccess(token, user));
+
+        api.defaults.headers.Authorization = `Bearer ${token}`; 
         console.log('redirecionar');
         history.push('/home');
         

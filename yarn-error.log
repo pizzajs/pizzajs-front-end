@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add immer
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add redux-persist
 
 PATH: 
   /home/joao/Android/Sdk/tools:/home/joao/Android/Sdk/platform-tools:/home/joao/bin:/home/joao/.local/bin:/home/joao/Android/Sdk/tools:/home/joao/Android/Sdk/platform-tools:/home/joao/bin:/home/joao/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -46,6 +46,7 @@ npm manifest:
       "axios": "^0.19.2",
       "babel-loader": "^8.1.0",
       "babel-polyfill": "^6.26.0",
+      "immer": "^6.0.3",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
       "react-icons": "^3.9.0",
@@ -2863,6 +2864,11 @@ Lockfile:
     version "0.1.5"
     resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
     integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
+  
+  immer@^6.0.3:
+    version "6.0.3"
+    resolved "https://registry.yarnpkg.com/immer/-/immer-6.0.3.tgz#94d5051cd724668160a900d66d85ec02816f29bd"
+    integrity sha512-12VvNrfSrXZdm/BJgi/KDW2soq5freVSf3I1+4CLunUM8mAGx2/0Njy0xBVzi5zewQZiwM7z1/1T+8VaI7NkmQ==
   
   import-local@2.0.0, import-local@^2.0.0:
     version "2.0.0"

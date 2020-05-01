@@ -2,11 +2,11 @@ import React from 'react'
 import {  Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import store from './store';
+import {store} from './store';
 
 export default function RouteWrapper({ component: Component, isPrivate = false, ... rest}) {
     
-    const {logado} =  store.getState().auth;
+    const {logado , token} =  store.getState().auth;
     console.log('logado');
     console.log(logado);
 
