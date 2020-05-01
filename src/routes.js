@@ -1,9 +1,11 @@
 import React from 'react';
-
-import {BrowserRouter, Switch } from  'react-router-dom';
+import  { Provider} from 'react-redux';
+import {Routes, Switch } from  'react-router-dom';
 
 import RouteWrapper from './Route';
 import history from './services/history';
+
+
 
 import Login from './pages/login';
 import Cadastro from   './pages/cadastro';
@@ -14,19 +16,17 @@ import Bebida from './pages/bebidas';
 import Home from './pages/home';
 import Pedidos from './pages/pedidos';
 
-export default function Routes() {
+export default function Route() {
     return(
-        <BrowserRouter history={history}>
-            <Switch>
-                <RouteWrapper path="/" exact component={Login} />
-                <RouteWrapper path="/pizza"  component={Pizza} isPrivate/>
-                <RouteWrapper path="/cadastro"  component={Cadastro} />
-                <RouteWrapper path="/pedido" component={Pedido} isPrivate/>
-                <RouteWrapper path="/produto"  component={Produto} isPrivate/>
-                <RouteWrapper path="/bebida" component={Bebida} isPrivate/>
-                <RouteWrapper path="/home" component={Home} isPrivate/>
-                <RouteWrapper path="/pedidos" component={Pedidos} isPrivate/>
-            </Switch>
-        </BrowserRouter>
+                <Switch>
+                    <RouteWrapper path="/" exact component={Login} />
+                    <RouteWrapper path="/pizza"  component={Pizza} isPrivate/>
+                    <RouteWrapper path="/cadastro"  component={Cadastro} />
+                    <RouteWrapper path="/pedido" component={Pedido} isPrivate/>
+                    <RouteWrapper path="/produto"  component={Produto} isPrivate/>
+                    <RouteWrapper path="/bebida" component={Bebida} isPrivate/>
+                    <RouteWrapper path="/home" component={Home} isPrivate/>
+                    <RouteWrapper path="/pedidos" component={Pedidos} isPrivate/>
+                </Switch>
     );
 }

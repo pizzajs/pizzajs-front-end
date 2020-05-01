@@ -17,8 +17,9 @@ export default function RouteWrapper({ component: Component, isPrivate = false, 
     }
 
     if( logado && !isPrivate){
+        console.log('entrou 2');
         return <Redirect to= "/home" />
-        console.log('entrou 1');
+        
     }
 
     return <Route {... rest} component={Component}/>

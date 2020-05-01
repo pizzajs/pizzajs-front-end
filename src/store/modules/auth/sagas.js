@@ -16,13 +16,15 @@ export function* login({payload}){
         })
         const { token, user } = response.data;
 
-        yield put(loginSuccess(token, user))
+        yield put(loginSuccess(token, user));
+        console.log('redirecionar');
+        history.push('/home');
         
     } catch (error) {
         alert('erro ao logar');
     }
 
-    history.push('/home')
+    
     
 }
 
