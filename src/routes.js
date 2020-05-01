@@ -3,6 +3,7 @@ import React from 'react';
 import {BrowserRouter, Switch } from  'react-router-dom';
 
 import RouteWrapper from './Route';
+import history from './services/history';
 
 import Login from './pages/login';
 import Cadastro from   './pages/cadastro';
@@ -15,7 +16,7 @@ import Pedidos from './pages/pedidos';
 
 export default function Routes() {
     return(
-        <BrowserRouter>
+        <BrowserRouter history={history}>
             <Switch>
                 <RouteWrapper path="/" exact component={Login} />
                 <RouteWrapper path="/pizza"  component={Pizza} isPrivate/>

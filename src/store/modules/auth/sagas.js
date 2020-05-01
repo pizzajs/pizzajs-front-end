@@ -1,3 +1,31 @@
-import { all } from 'redux-saga/effects';
+import { takeLatest, call, put , all } from 'redux-saga/effects';
+import api from '../../../services/api';
+import { loginSuccess } from './action';
+import history from '../../../services/history'
 
-export default all([]);
+
+
+export function* login({payload}){
+    const { email,  senha} = payload;
+
+    
+    try {
+        const response = yield call(api.post, 'sessions', {
+            email,
+            senha
+        })
+        const { token, user } = response.data;
+
+        yield put(loginSuccess(token, user))
+        
+    } catch (error) {
+        alert('erro ao logar');
+    }
+
+    history.push('/home')
+    
+}
+
+export default all([
+    takeLatest('LOGIN_REQUEST', login)
+]);

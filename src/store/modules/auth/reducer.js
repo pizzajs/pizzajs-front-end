@@ -1,10 +1,19 @@
-const inicial_state = "funcionou";
+import produce from 'immer'
+
+const inicial_state = {
+    token: null,
+    logado: false,
+    loading: false
+};
 
 export default function auth(state= inicial_state, actions){
     switch(actions.type) {
-        case 'TEST':
-            console.log(state);
-            return state;
+        case 'LOGIN':
+            console.log(actions);
+            return produce(state, draft => {
+                draft.token = actions.payload.token;
+                draft.logado = true;
+            })
         default: 
             return state;  
     }

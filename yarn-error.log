@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add prop-types
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add immer
 
 PATH: 
   /home/joao/Android/Sdk/tools:/home/joao/Android/Sdk/platform-tools:/home/joao/bin:/home/joao/.local/bin:/home/joao/Android/Sdk/tools:/home/joao/Android/Sdk/platform-tools:/home/joao/bin:/home/joao/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
