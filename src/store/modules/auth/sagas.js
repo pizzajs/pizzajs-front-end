@@ -19,7 +19,6 @@ export function* login({payload}){
         yield put(loginSuccess(token, user));
 
         api.defaults.headers.Authorization = `Bearer ${token}`; 
-        console.log('redirecionar');
         history.push('/home');
         
     } catch (error) {
@@ -30,6 +29,18 @@ export function* login({payload}){
     
 }
 
+function setToken({payload}){
+    if(!payload){
+        return;
+    }
+    const token = payload.auth.token;
+
+    if(token){
+        api.defaults.headers.Authorization = `Bearer ${token}`; 
+    }
+}
+
 export default all([
+    takeLatest('persist/REHYDRATE',setToken),
     takeLatest('LOGIN_REQUEST', login)
 ]);

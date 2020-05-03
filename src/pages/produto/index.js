@@ -2,9 +2,13 @@ import React from 'react';
 
 import Cabecalho from '../../utils/cabecalho';
 import imgPizza from '../../assets/pizza.jpg';
+import api from '../../services/api';
 import './style.css';
 export default function Produto () {
-    
+   const response = api.get('pizzas');
+   console.log(response);
+    // const response =["teste","teste2"];
+
     return(
         <div className="produto">
             <header className="header">
@@ -22,6 +26,9 @@ export default function Produto () {
                         <div className="ingredientes">
                         <h1>Ingredientes</h1>
                         <ul>
+                            {/* { response.map(pizza => <li key={pizza.id}>{pizza}</li>)
+                            } */}
+                            {/* <li>Cebola</li>
                             <li>Cebola</li>
                             <li>Cebola</li>
                             <li>Cebola</li>
@@ -36,8 +43,7 @@ export default function Produto () {
                             <li>Cebola</li>
                             <li>Cebola</li>
                             <li>Cebola</li>
-                            <li>Cebola</li>
-                            <li>Cebola</li>
+                            <li>Cebola</li> */}
 
                         </ul>
                         </div>
