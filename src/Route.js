@@ -7,8 +7,6 @@ import {store} from './store';
 export default function RouteWrapper({ component: Component, isPrivate = false, ... rest}) {
     
     const {logado , token} =  store.getState().auth;
-    console.log('logado');
-    console.log(logado);
 
     if(!logado && isPrivate){
         console.log('entrou 1');
