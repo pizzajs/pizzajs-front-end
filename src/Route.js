@@ -6,16 +6,14 @@ import {store} from './store';
 
 export default function RouteWrapper({ component: Component, isPrivate = false, ... rest}) {
     
-    const {logado , token} =  store.getState().auth;
+    const { logado } =  store.getState().auth;
 
     if(!logado && isPrivate){
-        console.log('entrou 1');
         return <Redirect to="/" />;
     
     }
 
     if( logado && !isPrivate){
-        console.log('entrou 2');
         return <Redirect to= "/home" />
         
     }

@@ -2,20 +2,23 @@ import React, { useEffect, useState } from 'react';
 
 import './styles.css';
 import Cabecalho from '../../utils/cabecalho/index';
-import imgPizza from '../../assets/pizza.jpg';
+
+
 import api from '../../services/api';
 import history from '../../services/history';
 
+import imagem from '../../utils/dicionariodepizzas'
 
 export default function Home() {
     
     const [pizzas, setPizzas] = useState([])
-    
+     
+   
     useEffect(() => {
         api.get('pizzas').then( res => {
             setPizzas(res.data)
         })
-
+        
     },[])
 
     function montarPizza() {
@@ -39,7 +42,7 @@ export default function Home() {
                         pizzas.map( pizza => (
                             <div key={pizza.id}className="caixapizza">
                                 <h1 className="nomepizza">{pizza.sabor}</h1>
-                                <img className ="imagem"src={imgPizza}/>
+                                <img className ="imagem"src={imagem[pizza.sabor]}/>           
                             </div>
                         ))
                     }
