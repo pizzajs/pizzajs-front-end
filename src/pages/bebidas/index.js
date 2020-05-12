@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Cabecalho from '../../utils/cabecalho';
 import './styles.css';
 import Checkbox from '../../utils/checkbox';
 
+import api from '../../services/api'
 export default function Bebida() {
+
+    const [ bebidas, setBebidas] = useState([]);
+
+    useEffect(() => {
+        api.get('bebidas').then( res => {
+            setBebidas(res.data)
+            
+        })
+        
+    }, [])
+
+
     return (
         <div>
             <div className="cabecalho">
@@ -14,18 +27,13 @@ export default function Bebida() {
                 <div className="caixaesquerda">
                     <h1 className="titulobebida">Bebidas</h1>
                     <ul className="bebidas">
-                        <li className="nomebebidas"> <Checkbox className="checkbox" Item="Coca-cola" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Sprit" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Fanta" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Coca-cola" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Sprit" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Fanta" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Coca-cola" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Guarana" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Sprit" /> </li>
-                        <li className="nomebebidas"> <Checkbox Item="Fanta" /> </li>
+                        {bebidas.map( bebida => (
+                            <li key={bebida.id} className="nomebebidas"> 
+                                <Checkbox className="checkbox" Item={bebida.nome} />
+                             </li>
+                        ))}
+                        
+                        
                     </ul>
                 </div>
                 <div className="caixadireita">
