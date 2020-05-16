@@ -13,7 +13,7 @@ import { Redirect } from 'react-router-dom';
 export default function Home() {
     
     const [pizzas, setPizzas] = useState([])
-    const [item, setItem] = useState([])
+    
    
     useEffect(() => {
         api.get('pizzas').then( res => {
