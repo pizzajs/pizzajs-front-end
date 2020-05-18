@@ -3,13 +3,20 @@ import React, {useEffect, useState} from 'react';
 import Cabecalho from '../../utils/cabecalho';
 import './styles.css';
 
+import { AdicionarBebida } from '../../store/modules/pedido/action'
 
-import api from '../../services/api'
+import api from '../../services/api';
+import { useDispatch } from 'react-redux';
+import history from '../../services/history';
+
 export default function Bebida() {
 
     const [ bebidas, setBebidas] = useState([]);
+    const dispatch = useDispatch();
 
     let item = []
+    
+
     useEffect(() => {
         api.get('bebidas').then( res => {
             setBebidas(res.data)
@@ -19,18 +26,18 @@ export default function Bebida() {
     }, [])
 
     function adicionacarrinho() {
-        console.log(item)
+        dispatch(AdicionarBebida(item));
+        history.push('/home')
     }
 
     function adicionabebida(bebida) {
-
         if(item.find(beb => beb == bebida)) {
-            const index = item.indexOf(bebida)
-            item.splice(index, 1)
+            const posicao = item.indexOf(bebida)
+            item.splice(posicao, 1)
         }else {
             item.push(bebida)
         }
-        
+ 
      }
 
 

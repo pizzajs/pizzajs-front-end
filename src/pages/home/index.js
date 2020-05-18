@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import './styles.css';
 import Cabecalho from '../../utils/cabecalho/index';
-import Produto from '../produto';
 
 import api from '../../services/api';
 import history from '../../services/history';
 
 import imagem from '../../utils/dicionariodepizzas'
-import { Redirect } from 'react-router-dom';
+
 
 export default function Home() {
     

@@ -9,7 +9,6 @@ const inicial_state = {
 export default function auth(state= inicial_state, actions){
     switch(actions.type) {
         case 'LOGIN':
-            console.log(actions);
             return produce(state, draft => {
                 draft.token = actions.payload.token;
                 draft.logado = true;

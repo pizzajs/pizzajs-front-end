@@ -1,14 +1,14 @@
-// import produce from 'immer'
+import produce from 'immer';
 
-// const inicial_state = {
-//     preco: 0,
-//     pizzas: [],
-//     bebidas: [],
-//     pedido_ativo: false
-// };
+const inicial_state = {
+     preco: 0,
+     pizzas: [],
+     bebidas: [],
+     pedido_ativo: false
+};
 
-// export default function pedido(state= inicial_state, actions){
-//     switch(actions.type) {
+export default function pedido(state= inicial_state, actions){
+     switch(actions.type) {
 //         case 'ADD_PIZZA':
 //             return produce(state, draft => {
 
@@ -17,10 +17,10 @@
 //             return produce(state, draft => {
 
 //             })
-//         case 'ADD_BEBIDA':
-//             return produce(state, draft => {
-
-//         })
+         case 'ADD_BEBIDA':
+            return produce(state, draft => {
+                draft.bebidas = actions.payload.bebida
+            })
 //         case 'REMOVE_BEBIDA':
 //             return produce(state, draft => {
 
@@ -33,7 +33,8 @@
 //             return produce(state, draft => {
 
 //             })
-//         default: 
-//             return state;  
-//     }
-// }
+         default: 
+             return state;  
+     }
+     
+ }
