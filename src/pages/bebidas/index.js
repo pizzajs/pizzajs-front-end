@@ -27,6 +27,11 @@ export default function Bebida() {
 
     function adicionacarrinho() {
         dispatch(AdicionarBebida(item));
+        history.push('/pedido')
+    }
+
+    function adicionacarrinhocontinuarcomprando() {
+        dispatch(AdicionarBebida(item));
         history.push('/home')
     }
 
@@ -63,7 +68,7 @@ export default function Bebida() {
                 <div className="caixadireita">
                     <h1 className="valor">Valor Total: R$ 72,38</h1>
                     <div className="botoes">
-                        <button className="botaopizza">Adicionar pizza</button>
+                        <button onClick={adicionacarrinhocontinuarcomprando} className="botaopizza">Adicionar pizza</button>
                         <button onClick={adicionacarrinho} className="botaofinalizar">Adicionar ao carrinho</button>
                     </div>
                 </div>
