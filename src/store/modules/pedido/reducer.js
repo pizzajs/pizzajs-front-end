@@ -7,6 +7,8 @@ const inicial_state = {
      pedido_ativo: false
 };
 
+// fazer logica de persistir os dados do pedido.
+
 export default function pedido(state= inicial_state, actions){
      switch(actions.type) {
 //         case 'ADD_PIZZA':
@@ -34,6 +36,7 @@ export default function pedido(state= inicial_state, actions){
 //             return produce(state, draft => {
 
 //             })
+
          default: 
              return state;  
      }

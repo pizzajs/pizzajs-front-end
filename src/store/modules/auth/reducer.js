@@ -13,6 +13,14 @@ export default function auth(state= inicial_state, actions){
                 draft.token = actions.payload.token;
                 draft.logado = true;
             })
+            break;
+        case 'SIGN-OUT':
+            return produce(state, draft => {
+                draft.token = null;
+                draft.logado = false;
+            })
+            break;
+
         default: 
             return state;  
     }

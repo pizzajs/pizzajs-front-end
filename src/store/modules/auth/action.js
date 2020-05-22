@@ -17,3 +17,9 @@ export function loginFailure() {
         type: 'LOGIN_FAILURE'
     }
 }
+
+export function signOutRequest() {
+    return {
+        type: 'SIGN-OUT'
+    }
+}

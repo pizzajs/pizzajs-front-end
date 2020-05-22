@@ -1,6 +1,6 @@
 import { takeLatest, call, put , all } from 'redux-saga/effects';
 import api from '../../../services/api';
-import { loginSuccess } from './action';
+import { loginSuccess, signOutRequest } from './action';
 import history from '../../../services/history'
 
 
@@ -24,9 +24,6 @@ export function* login({payload}){
     } catch (error) {
         alert('erro ao logar');
     }
-
-    
-    
 }
 
 function setToken({payload}){
@@ -40,7 +37,13 @@ function setToken({payload}){
     }
 }
 
+function signOut() {
+    alert("Deslogando em 3.2.1...");
+    history.push('/');
+}
+
 export default all([
     takeLatest('persist/REHYDRATE',setToken),
-    takeLatest('LOGIN_REQUEST', login)
+    takeLatest('LOGIN_REQUEST', login),
+    takeLatest('SIGN-OUT', signOut)
 ]);
