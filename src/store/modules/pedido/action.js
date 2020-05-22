@@ -31,10 +31,10 @@ export function RemoverPizza(id) {
 //     }
 // }
 
-export function AdicionarBebida(bebida) {
+export function AdicionarBebida(bebida, valor) {
     return {
         type: 'ADD_BEBIDA',
-        payload: { bebida }
+        payload: { bebida, valor }
     }
 }
 

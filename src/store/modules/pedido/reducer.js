@@ -20,6 +20,7 @@ export default function pedido(state= inicial_state, actions){
          case 'ADD_BEBIDA':
             return produce(state, draft => {
                 draft.bebidas = actions.payload.bebida
+                draft.preco += actions.payload.valor
             })
 //         case 'REMOVE_BEBIDA':
 //             return produce(state, draft => {
