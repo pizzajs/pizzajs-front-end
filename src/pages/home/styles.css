@@ -51,6 +51,10 @@
     padding: 2%;
 }
 
+.paginainicial .pizzasprontas .caixapizza:hover {
+    cursor: pointer;
+}
+
 .paginainicial .pizzasprontas {
     position: absolute;
     width: 100%;

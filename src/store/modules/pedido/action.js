@@ -24,17 +24,17 @@ export function RemoverPizza(id) {
 
 //ACTIONS BEBIDA
 
-export function AdicionarBebidaProcess(bebida) {
-    return {
-        type: 'ADD_BEBIDA_PROCESS',
-        payload: { bebida }
-    }
-}
+// export function AdicionarBebidaProcess(bebida) {
+//     return {
+//         type: 'ADD_BEBIDA_PROCESS',
+//         payload: { bebida }
+//     }
+// }
 
-export function AdicionarBebida(bebida) {
+export function AdicionarBebida(bebida, valor) {
     return {
         type: 'ADD_BEBIDA',
-        payload: { bebida }
+        payload: { bebida, valor }
     }
 }
 

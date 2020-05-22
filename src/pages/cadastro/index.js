@@ -6,16 +6,12 @@ import { MdArrowBack } from "react-icons/md";
 import { Form, Input } from '@rocketseat/unform';
 
 import api from '../../services/api';
-
+import history from '../../services/history';
 
 
 export default function Cadastro() {
     
     async function Cadastrar(dados){
-        // const headers={
-        //     'Content-Type': 'application/json; charset=utf-8',
-        //     'Access-Control-Allow-Origin': '*'
-        // }
 
         if(dados.senha === dados.confirmarsenha) {
             // application/json;
@@ -37,8 +33,10 @@ export default function Cadastro() {
             alert('A digite senhas iguais!');
         }
         
-        
-        // api.post('cadastro', data)
+    }
+
+    function voltaraologin() {
+        history.push('/')
     }
 
     return(
@@ -56,7 +54,7 @@ export default function Cadastro() {
                     <Input name= "senha" type="password" placeholder="Senha" className="input"/>
                     <Input name= "confirmarsenha" type="password" placeholder="Confirmar Senha" className="input"/>
                     <button className="botaovermelho">Cadastrar</button>
-                    <div>
+                    <div onClick={voltaraologin}>
                         <MdArrowBack className="iconevoltar"/>
                     </div>
                 </div>
