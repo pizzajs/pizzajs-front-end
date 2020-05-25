@@ -6,11 +6,12 @@ import './styles.css';
 import { AdicionarBebida } from '../../store/modules/pedido/action'
 
 import api from '../../services/api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import history from '../../services/history';
 
 export default function Bebida() {
 
+    const valorpedido = useSelector(state => state.pedido.preco)
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [item, setItem] = useState([]);
@@ -20,7 +21,7 @@ export default function Bebida() {
     useEffect(() => {
         api.get('bebidas').then(res => {
             setBebidas(res.data)
-
+            setValortotal(valorpedido)
         })
 
     }, [])
@@ -36,8 +37,6 @@ export default function Bebida() {
     }
 
     function adicionabebida(bebida, preco) {
-        console.log(bebida)
-        console.log(preco)
         if (item.find(beb => beb == bebida)) {
             let aux = item
             const posicao = aux.indexOf(bebida)
