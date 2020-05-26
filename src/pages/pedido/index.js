@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css';
 
 import { MdDelete } from "react-icons/md";
@@ -23,7 +23,9 @@ export default function Pedido() {
                         <div className="pizzas">
                             <h1>Pizzas</h1>
                             <ul>
-                                <li>minha pizza <MdDelete className="lixeira" /></li>                                               
+                                {bebidas.map(bebida => (
+                                    <li key={bebida}> {bebida} <MdDelete className="lixeira" /></li>
+                                ))}                                             
                             </ul>
                         </div> 
                         <h1 className="valortotal">Valor total: 53,72</h1>
@@ -32,7 +34,10 @@ export default function Pedido() {
                         <div className="bebida">
                             <h1>Bebidas</h1>
                             <ul>
-                                <li>coca-cola <MdDelete className="lixeira" /></li>                               
+                                {pizzas.map(pizza => (
+                                    <li key={pizza}> {pizza} <MdDelete className="lixeira" /></li>
+                                ))}
+                                                               
                             </ul>
                         </div>
                         <button className="redbotao">Finalizar pedido</button>
