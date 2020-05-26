@@ -9,6 +9,7 @@ export default function Pedido() {
 
     const bebidas = useSelector(state => state.pedido.bebidas)
     const pizzas = useSelector(state => state.pedido.pizzas)
+    const valorpedido = useSelector(state => state.pedido.preco)
 
     return (    
         <div className="produto">
@@ -28,7 +29,7 @@ export default function Pedido() {
                                 ))}                                             
                             </ul>
                         </div> 
-                        <h1 className="valortotal">Valor total: 53,72</h1>
+                        <h1 className="valortotal">Valor total: R$ {valorpedido} </h1>
                     </span>
                     <span className="caixabebida">  
                         <div className="bebida">
@@ -36,8 +37,7 @@ export default function Pedido() {
                             <ul>
                                 {pizzas.map(pizza => (
                                     <li key={pizza}> {pizza} <MdDelete className="lixeira" /></li>
-                                ))}
-                                                               
+                                ))}                                    
                             </ul>
                         </div>
                         <button className="redbotao">Finalizar pedido</button>
