@@ -1,11 +1,14 @@
 import React from 'react';
+import './styles.css';
 
 import { MdDelete } from "react-icons/md";
-import './styles.css';
 import Cabecalho from '../../utils/cabecalho/index';
+import { useDispatch, useSelector } from 'react-redux';
 
-// MdDelete
 export default function Pedido() {
+
+    const bebidas = useSelector(state => state.pedido.bebidas)
+    const pizzas = useSelector(state => state.pedido.pizzas)
 
     return (    
         <div className="produto">
@@ -20,19 +23,7 @@ export default function Pedido() {
                         <div className="pizzas">
                             <h1>Pizzas</h1>
                             <ul>
-                                <li>minha pizza <MdDelete className="lixeira" /></li>
-                                <li>calabresa <MdDelete className="lixeira" /></li>
-                                <li>mussarela <MdDelete className="lixeira" /></li>
-                                <li>minha pizza <MdDelete className="lixeira" /></li>
-                                <li>calabresa <MdDelete className="lixeira" /></li>
-                                <li>mussarela <MdDelete className="lixeira" /></li>
-                                <li>minha pizza <MdDelete className="lixeira" /></li>
-                                <li>calabresa <MdDelete className="lixeira" /></li>
-                                <li>mussarela <MdDelete className="lixeira" /></li>
-                                <li>minha pizza <MdDelete className="lixeira" /></li>
-                                <li>calabresa <MdDelete className="lixeira" /></li>
-                                <li>mussarela <MdDelete className="lixeira" /></li>
-                                                   
+                                <li>minha pizza <MdDelete className="lixeira" /></li>                                               
                             </ul>
                         </div> 
                         <h1 className="valortotal">Valor total: 53,72</h1>
@@ -41,18 +32,7 @@ export default function Pedido() {
                         <div className="bebida">
                             <h1>Bebidas</h1>
                             <ul>
-                                <li>coca-cola <MdDelete className="lixeira" /></li>
-                                <li>guarana <MdDelete className="lixeira" /></li>
-                                <li>fanta <MdDelete className="lixeira" /></li>
-                                <li>coca-cola <MdDelete className="lixeira" /></li>
-                                <li>guarana <MdDelete className="lixeira" /></li>
-                                <li>fanta <MdDelete className="lixeira" /></li>
-                                <li>coca-cola <MdDelete className="lixeira" /></li>
-                                <li>guarana <MdDelete className="lixeira" /></li>
-                                <li>fanta <MdDelete className="lixeira" /></li>
-                                <li>coca-cola <MdDelete className="lixeira" /></li>
-                                <li>guarana <MdDelete className="lixeira" /></li>
-                                <li>fanta <MdDelete className="lixeira" /></li>                                
+                                <li>coca-cola <MdDelete className="lixeira" /></li>                               
                             </ul>
                         </div>
                         <button className="redbotao">Finalizar pedido</button>
