@@ -24,10 +24,17 @@ export default function pedido(state= inicial_state, actions){
                 draft.bebidas = actions.payload.bebida
                 draft.preco += actions.payload.valor
             })
-//         case 'REMOVE_BEBIDA':
-//             return produce(state, draft => {
-
-//             })
+        case 'REMOVE_BEBIDA':
+            return produce(state, draft => {
+                console.log('entrou')
+                console.log(state.bebidas)
+                console.log(actions.payload.index)
+                let Arraybebidas = state.bebidas
+                Arraybebidas.splice(actions.payload.index, 1)
+                console.log(Arraybebidas)
+                //draft.bebidas.splice(actions.payload.index, 1)
+                console.log(state.bebidas)
+            })
 //         case 'FINALIZAR_PEDIDO':
 //             return produce(state, draft => {
 
