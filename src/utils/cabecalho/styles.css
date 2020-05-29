@@ -15,19 +15,40 @@
 .cabecalho div img {
     height:100%;
     width: 15%;
-
 }
+
+.cabecalho div img:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 .cabecalho div h1 {
     color: #fff;
+}
+
+.cabecalho div h1:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .botaoSair {
     position: absolute;
     right: 50px;
-    
-    /* //padding: 0 25px 0 0; */
-    /* padding-left: 50%; */
-    /* margin-left: 50%; */
-    /* height: 40% ; */
     color: #fff;
+}
+
+.botaoSair:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.carrinho{
+    position: absolute;
+    right: 150px;
+    color: #fff;
+}
+
+.carrinho:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }

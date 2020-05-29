@@ -27,6 +27,7 @@ export default function Bebida() {
     }, [])
 
     function adicionacarrinho() {
+        //console.log(item, valortotal)
         dispatch(AdicionarBebida(item, valortotal));
         history.push('/pedido')
     }
