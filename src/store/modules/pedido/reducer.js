@@ -33,6 +33,13 @@ export default function pedido(state= inicial_state, actions){
                 Arraybebidas.splice(actions.payload.index, 1)
                 draft.bebidas = Arraybebidas
             })
+        case 'SIGN-OUT':
+            return produce(state, draft => {
+                draft.preco = 0,
+                draft.pizzas =  [],
+                draft.bebidas =  [],
+                draft.pedido_ativo = false
+            })
 //         case 'FINALIZAR_PEDIDO':
 //             return produce(state, draft => {
 

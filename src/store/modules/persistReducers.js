@@ -5,7 +5,7 @@ export default reducers => {
     const persistedReducer = persistReducer({
         key: 'pizzajs',
         storage,
-        whitelist: ['user', 'auth'],
+        whitelist: ['user', 'auth','pedido'],
     }, reducers);
 
     return persistedReducer;

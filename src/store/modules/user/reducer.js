@@ -17,7 +17,7 @@ export default function user(state= inicial_state, action){
         case 'SIGN-OUT':
             return produce(state, draft => {
                 draft.id = null;
-                draft.nome = null;
+                draft.name = null;
                 draft.email = null;
             })
         

@@ -16,6 +16,7 @@ export default function auth(state= inicial_state, actions){
             break;
         case 'SIGN-OUT':
             return produce(state, draft => {
+                
                 draft.token = null;
                 draft.logado = false;
             })
