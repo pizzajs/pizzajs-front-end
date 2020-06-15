@@ -38,10 +38,10 @@ export function AdicionarBebida(bebida, valor) {
     }
 }
 
-export function RemoverBebida(index) {
+export function RemoverBebida(index, valor) {
     return {
         type: 'REMOVE_BEBIDA',
-        payload: { index }
+        payload: { index, valor }
     }
 }
 

@@ -38,7 +38,6 @@ export default function Bebida() {
     }
 
     function adicionabebida(bebida) {
-
         
         if (item.find(beb => beb == bebida)) {
             let aux = item
@@ -51,11 +50,8 @@ export default function Bebida() {
             aux.push(bebida)
             setItem(aux)
             setValortotal(valortotal + bebida.preco)
-        }
-
-        
+        }     
     }
-
 
     return (
         <div>

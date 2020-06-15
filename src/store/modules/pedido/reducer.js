@@ -34,6 +34,7 @@ export default function pedido(state= inicial_state, actions){
                 let Arraybebidas = state.bebidas.slice()
                 Arraybebidas.splice(actions.payload.index, 1)
                 draft.bebidas = Arraybebidas
+                draft.preco -= actions.payload.valor
             })
         case 'SIGN-OUT':
             return produce(state, draft => {
