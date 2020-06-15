@@ -23,7 +23,9 @@ const imagem = {
     'vegana': pizzavegana,
     'frango': pizzafrango,
     '4 queijos': pizza4queijos,
-    'mussarela': pizzamussarela
+    'mussarela': pizzamussarela,
+    'Calabresa':  imgPizza,
+    'Chocolate': pizzachocolate,
 }
 
 export default imagem

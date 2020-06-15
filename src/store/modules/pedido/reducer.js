@@ -9,6 +9,10 @@ const inicial_state = {
             nome: '',
             preco: 0}
      ],
+     pizzas_ids:[],
+     pizzas_customizadas:[],
+     bebidas: [],
+     bebidas_ids:[],
      pedido_ativo: false
 };
 
@@ -16,10 +20,13 @@ const inicial_state = {
 
 export default function pedido(state= inicial_state, actions){
      switch(actions.type) {
-//         case 'ADD_PIZZA':
-//             return produce(state, draft => {
-
-//             })
+        case 'ADD_PIZZA':
+                return produce(state, draft => {
+                    draft.pizzas_ids = [...state.pizzas_ids, actions.payload.pizza.id],
+                    draft.preco += actions.payload.pizza.preco,
+                    draft.pizzas = [...state.pizzas, { sabor: actions.payload.pizza.sabor, preco:actions.payload.pizza.preco , ingredientes: actions.payload.pizza.ingredientes_padrao, quantidade: 1}]
+                })
+            break;
 //         case 'REMOVE_PIZZA':
 //             return produce(state, draft => {
 
@@ -40,6 +47,7 @@ export default function pedido(state= inicial_state, actions){
             return produce(state, draft => {
                 draft.preco = 0,
                 draft.pizzas =  [],
+                draft.pizzas_ids =[],
                 draft.bebidas =  [],
                 draft.pedido_ativo = false
             })

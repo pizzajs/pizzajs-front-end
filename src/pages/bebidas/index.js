@@ -11,11 +11,12 @@ import history from '../../services/history';
 
 export default function Bebida() {
 
+    const teste = useSelector(state => state.pedido.bebidas)
     const valorpedido = useSelector(state => state.pedido.preco)
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [item, setItem] = useState([]);
-
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
