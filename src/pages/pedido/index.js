@@ -31,7 +31,7 @@ export default function Pedido() {
                             <h1>Pizzas</h1>
                             <ul>                       
                                 {bebidas.map((bebida, index=0) => (
-                                    <li key={bebida}> {bebida} <MdDelete className="lixeira" onClick={() => deletarbebida(index++)}/></li>
+                                    <li key={bebida.id}> {bebida.nome} <MdDelete className="lixeira" onClick={() => deletarbebida(index++)}/></li>
                                 ))}                                             
                             </ul>
                         </div> 

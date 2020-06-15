@@ -3,7 +3,12 @@ import produce from 'immer';
 const inicial_state = {
      preco: 0,
      pizzas: [],
-     bebidas: [],
+     bebidas: [
+         { 
+            id : 0,
+            nome: '',
+            preco: 0}
+     ],
      pedido_ativo: false
 };
 
@@ -26,9 +31,6 @@ export default function pedido(state= inicial_state, actions){
             })
         case 'REMOVE_BEBIDA':
             return produce(state, draft => {
-                //console.log('entrou')
-                //console.log(state.bebidas)
-                //console.log(actions.payload.index)
                 let Arraybebidas = state.bebidas.slice()
                 Arraybebidas.splice(actions.payload.index, 1)
                 draft.bebidas = Arraybebidas

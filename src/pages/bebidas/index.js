@@ -26,31 +26,34 @@ export default function Bebida() {
 
     }, [])
 
-    function adicionacarrinho() {
-        //console.log(item, valortotal)
-        dispatch(AdicionarBebida(item, valortotal));
+    async function adicionacarrinho() {
+        
+        await dispatch(AdicionarBebida(item, valortotal));
         history.push('/pedido')
     }
 
-    function adicionacarrinhocontinuarcomprando() {
-        dispatch(AdicionarBebida(item));
+    async function adicionacarrinhocontinuarcomprando() {
+        await dispatch(AdicionarBebida(item, valortotal));
         history.push('/home')
     }
 
-    function adicionabebida(bebida, preco) {
+    function adicionabebida(bebida) {
+
+        
         if (item.find(beb => beb == bebida)) {
             let aux = item
             const posicao = aux.indexOf(bebida)
             aux.splice(posicao, 1)
             setItem(aux)
-            setValortotal(valortotal - preco)
+            setValortotal(valortotal - bebida.preco)
         } else {
             let aux = item
             aux.push(bebida)
             setItem(aux)
-            setValortotal(valortotal + preco)
+            setValortotal(valortotal + bebida.preco)
         }
 
+        
     }
 
 
@@ -66,7 +69,7 @@ export default function Bebida() {
                         {bebidas.map(bebida => (
                             <li key={bebida.id} className="nomebebidas">
                                 <label className="container">{bebida.nome}
-                                    <input type="checkbox" value={bebida} onClick={() => adicionabebida(bebida.nome, bebida.preco)} />
+                                    <input type="checkbox" value={bebida} onClick={() => adicionabebida(bebida)} />
                                     <span className="checkmark"></span>
                                 </label>
                             </li>

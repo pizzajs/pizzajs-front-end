@@ -4,9 +4,14 @@ import Cabecalho from '../../utils/cabecalho';
 import imgPizza from '../../assets/pizza.jpg';
 import api from '../../services/api';
 import './style.css';
-export default function Produto () {
-   const response = api.get('pizzas');
+export default function Produto (props) {
+   //const response = props.location.state.sabor
+   
+   //    = api.get('pizzas');
+   
    console.log(response);
+
+   //console.log()
     // const response =["teste","teste2"];
 
     return(
