@@ -6,17 +6,6 @@ import { useDispatch } from 'react-redux';
 import { AdicionarPizza } from '../../store/modules/pedido/action';
 
 import './style.css';
-<<<<<<< HEAD
-export default function Produto (props) {
-   //const response = props.location.state.sabor
-   
-   //    = api.get('pizzas');
-   
-   console.log(response);
-
-   //console.log()
-    // const response =["teste","teste2"];
-=======
 import Pedidos from '../pedidos';
 export default function Produto (props) {
     const  produto= props.location.state;
@@ -26,7 +15,6 @@ export default function Produto (props) {
         dispatch(AdicionarPizza(produto));
         alert("adicionado com sucesso");
     }
->>>>>>> 545874346f8fa1a5a118b4b808134d2bbb65da73
 
     return(
         <div className="produto">
