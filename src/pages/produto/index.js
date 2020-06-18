@@ -7,6 +7,7 @@ import { AdicionarPizza } from '../../store/modules/pedido/action';
 
 import './style.css';
 import Pedidos from '../pedidos';
+
 export default function Produto (props) {
     const  produto= props.location.state;
     const dispatch = useDispatch();

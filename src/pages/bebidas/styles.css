@@ -85,3 +85,35 @@
     margin-left: 15%;
     margin-top: 5%;
 }
+
+.botoesBebidas{
+    display: flex;
+    
+}
+
+.quantidadeBebida {
+    margin-top: 1%;
+    font-size: 120%;
+}
+
+.botaoDiminuir {
+   width:10%;
+   margin-top: 2%;
+   margin-left: 10%;
+}
+
+.botaoDiminuir:active {
+    opacity: 50%;
+ }
+
+.botaoAumentar {
+    width:10%;
+    margin-top: 2%;
+ }
+
+ .botaoAumentar:active {
+    opacity: 50%;
+ }
+ .bebida {
+    width: 60%;
+ }
