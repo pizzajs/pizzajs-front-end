@@ -11,12 +11,11 @@ import history from '../../services/history';
 
 export default function Bebida() {
 
-    const teste = useSelector(state => state.pedido.bebidas)
     const valorpedido = useSelector(state => state.pedido.preco)
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [item, setItem] = useState([]);
-    
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,7 +27,7 @@ export default function Bebida() {
     }, [])
 
     async function adicionacarrinho() {
-        
+
         await dispatch(AdicionarBebida(item, valortotal));
         history.push('/pedido')
     }
@@ -36,22 +35,6 @@ export default function Bebida() {
     async function adicionacarrinhocontinuarcomprando() {
         await dispatch(AdicionarBebida(item, valortotal));
         history.push('/home')
-    }
-
-    function adicionabebida(bebida) {
-        
-        if (item.find(beb => beb == bebida)) {
-            let aux = item
-            const posicao = aux.indexOf(bebida)
-            aux.splice(posicao, 1)
-            setItem(aux)
-            setValortotal(valortotal - bebida.preco)
-        } else {
-            let aux = item
-            aux.push(bebida)
-            setItem(aux)
-            setValortotal(valortotal + bebida.preco)
-        }     
     }
 
     return (
@@ -63,38 +46,16 @@ export default function Bebida() {
                 <div className="caixaesquerda">
                     <h1 className="titulobebida">Bebidas</h1>
                     <ul className="bebidas">
-                    <li className="nomebebidas">
-                        <div className="botoesBebidas">
-                            <h2 className="bebida" >coca-cola</h2>
-                            <FiMinusSquare className='botaoDiminuir' size={25} onClick={()=> {}}/>
-                            <h4 className="quantidadeBebida">0</h4>
-                            <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={()=> {}}/>
-                        </div>
-                    </li>
-                    <li className="nomebebidas">
-                        <div className="botoesBebidas">
-                            <h2 className="bebida" >guarana antartica</h2>
-                            <FiMinusSquare className='botaoDiminuir' size={25} onClick={()=> {}}/>
-                            <h4 className="quantidadeBebida">0</h4>
-                            <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={()=> {}}/>
-                        </div>
-                    </li>
-                    <li className="nomebebidas">
-                        <div className="botoesBebidas">
-                            <h2 className="bebida" >pepsi</h2>
-                            <FiMinusSquare className='botaoDiminuir' size={25} onClick={()=> {}}/>
-                            <h4 className="quantidadeBebida">0</h4>
-                            <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={()=> {}}/>
-                        </div>
-                    </li>    
-                        {/* {bebidas.map(bebida => (
+                        {bebidas.map(bebida => (
                             <li key={bebida.id} className="nomebebidas">
-                                <label className="container">{bebida.nome}
-                                    <input type="checkbox" value={bebida} onClick={() => adicionabebida(bebida)} />
-                                    <span className="checkmark"></span>
-                                </label>
+                                <div className="botoesBebidas">
+                                    <h2 className="bebida" >{bebida.nome}</h2>
+                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => { }} />
+                                    <h4 className="quantidadeBebida">0</h4>
+                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => { }} />
+                                </div>
                             </li>
-                        ))} */}
+                        ))}
                     </ul>
                 </div>
                 <div className="caixadireita">
