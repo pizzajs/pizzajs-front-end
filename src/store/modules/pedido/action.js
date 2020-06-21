@@ -14,6 +14,15 @@ export function AdicionarPizza(pizza) {
     }
 }
 
+export function AdicionarPizzaCustomizada(pizza){
+    console.log(pizza);
+   
+    return {
+        type: 'ADD_PIZZA_CUSTOM',
+        payload: {pizza}
+    }
+}
+
 export function RemoverPizza(id) {
     return {
         type: 'REMOVE_PIZZA',
@@ -38,10 +47,10 @@ export function AdicionarBebida(bebida, valor) {
     }
 }
 
-export function RemoverBebida(index) {
+export function RemoverBebida(index, valor) {
     return {
         type: 'REMOVE_BEBIDA',
-        payload: { index }
+        payload: { index, valor }
     }
 }
 

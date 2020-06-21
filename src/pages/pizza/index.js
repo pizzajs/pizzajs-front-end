@@ -1,24 +1,27 @@
 import React, {useEffect, useState }from 'react';
 import Cabecalho from '../../utils/cabecalho';
 import './style.css';
-import Checkbox from '../../utils/checkbox';
+import { useDispatch } from 'react-redux';
+import { AdicionarPizzaCustomizada } from '../../store/modules/pedido/action';
 import api from '../../services/api';
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 
 
 export default function Pizza (){
-    const [bordaSelecionada, setBordaSelecionada] = useState("");
-    const [massaSelecionada, setMassaSelecionada] = useState("");
+    const [bordaSelecionada, setBordaSelecionada] = useState([]);
+    const [auxMassa, setAuxMassa] = useState(0);
+    const [auxBorda, setAuxBorda] = useState(0);
+    const [auxRecheio, setAuxRecheio] = useState(0);
+    const [massaSelecionada, setMassaSelecionada] = useState([]);
     const [recheioSelecionado, setRecheioSelecionado] = useState([]);
     const [massas, setMassas] = useState([]);
     const [bordas, setBordas] = useState([]);
     const [recheios, setRecheios] = useState([]);
-    const [ingredientesIds, setIngredientesIds] = useState([]);
     const [quantidade, setQuantidade] = useState({});
-    const [valorRecheio, setValorRecheio] = useState(0);
-    const [valorMassa, setValorMassa] = useState(0);
-    const [valorBorda, setValorBorda] = useState(0);
     const [total, setTotal] = useState(0);
+    const [nomePizza, setPizzaNome] = useState("");
+
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         async function getIngredientes(){
@@ -33,10 +36,12 @@ export default function Pizza (){
 
             aux = response.data.filter(item => item.tipo === 'R');
             setRecheios(aux);
+           
 
             let qtd ={}
             aux.map(recheio =>{
-                qtd[recheio.id] = 0;
+        
+                qtd[recheio.id] ={sabor: recheio.nome , quantidade: 0}
             })
             setQuantidade(qtd);
         }
@@ -46,36 +51,49 @@ export default function Pizza (){
     },[])
 
     function selectMassa(event){
-        const massaPreco = event.target.value.split(',');
-        setValorMassa(Number(massaPreco[1])); 
-        setTotal(Number(massaPreco[1]) + valorBorda + valorRecheio )
+        const massaInfo = event.target.value.split(',');
+        if(massaInfo[0] !== "-1"){
+            setAuxMassa(Number(massaInfo[1]));
+            setMassaSelecionada([String(massaInfo[0]), massaInfo[2]]);
+            setTotal(Number(massaInfo[1])+ auxBorda + auxRecheio );
+        }
+        
     }
     function selectBorda(event){
-        const bordaPreco = event.target.value.split(',');
-        setValorBorda(Number(bordaPreco[1])); 
-        setTotal(Number(bordaPreco[1]) + valorMassa + valorRecheio )
+        const bordaInfo = event.target.value.split(',');
+        if(bordaInfo[0] !== "-1"){
+            setAuxBorda(Number(bordaInfo[1]))
+            setBordaSelecionada(String(bordaInfo[0], bordaInfo[2]));
+            setTotal(Number(bordaInfo[1]) + auxMassa + auxRecheio );
+        }
+        
     }
     
     function adicionarRecheio(id, preco){
+
         let cont = {};
         cont = quantidade;
-        cont[id] += 1;
-        setValorRecheio(valorRecheio + preco);
+        cont[id].quantidade += 1;
         setQuantidade(cont);
-        setTotal(total + preco);        
+        setRecheioSelecionado([...recheioSelecionado, id]);
+        setTotal(total + preco);
+            
     }
+    
     function decrementarRecheio(id, preco){
 
-        if(quantidade[id] ==0){
+        if(quantidade[id].quantidade ==0){
             setTotal(total);
         }
         else{
+            const recheiosids = recheioSelecionado;
+            recheiosids.splice(recheiosids.indexOf(id),1);
+            setRecheioSelecionado(recheiosids);
+
             let cont = {};
             cont = quantidade;
-            cont[id] -= 1;
-            
+            cont[id].quantidade -= 1;
             setTotal(total- preco);
-            setValorRecheio(valorRecheio - preco);
 
             setQuantidade(cont);
 
@@ -84,14 +102,40 @@ export default function Pizza (){
     }
 
     function Quantidade({id,preco}){
+        if(Object.keys(quantidade).length !== 0){
+            return(
+                <div className="botoesRecheio">
+                    <FiMinusSquare className='butaoRecheio' size={25} onClick={()=>decrementarRecheio(id, preco)}/>
+                    <h4>{quantidade[id].quantidade}</h4>
+
+                    <FiPlusSquare className='butaoRecheio' size={25} color="#red" onClick={()=>adicionarRecheio(id, preco)}/>
+                </div>
+            );
+        }
+        else{
+            return (<></>);
+        }
         
-        return(
-            <div className="botoesRecheio">
-                <FiMinusSquare className='butaoRecheio' size={25} onClick={()=>decrementarRecheio(id, preco)}/>
-                   <h4>{quantidade[id]}</h4>
-                <FiPlusSquare className='butaoRecheio' size={25} color="#red" onClick={()=>adicionarRecheio(id, preco)}/>
-            </div>
-        );
+       
+    }
+    function pizzaNome(event){
+        
+        setPizzaNome(event.target.value);
+    }
+
+    function adicionarMinhaPizza(){
+        
+        if(!nomePizza  || !massaSelecionada || !bordaSelecionada || recheioSelecionado.length === 0){
+            alert("Preencha e selecione as opções!");
+            return
+        }
+        let pizzaInfo = {};
+        recheioSelecionado.map(rec =>{
+            pizzaInfo[rec] = quantidade[rec]
+        })
+        const ingredientesIds = { nome: nomePizza, ids:[Number(massaSelecionada[0]), Number(bordaSelecionada[0]),...recheioSelecionado], massa: massaSelecionada[1], borda: bordaSelecionada[1], ingredientes: pizzaInfo, preco: total};
+        dispatch( AdicionarPizzaCustomizada(ingredientesIds));
+        alert("Pizza criada com sucesso!");
     }
 
     return(
@@ -101,8 +145,12 @@ export default function Pizza (){
             </header>
             <div className="info">
                 <div className="esquerda">
+                    <h2>Nome da pizza</h2>
+                    <input className="massa"  type="text" maxLength="20" placeholder="Digite aqui.." onChange={pizzaNome}/>
+
                     <h2>Massas</h2>
-                    <select className="massa" onChange = {selectMassa} >
+                    <select className="massa"  onChange = {selectMassa} >
+                        
                         {
                             massas.map(massa => ( 
                                 <option key={massa.id} 
@@ -112,20 +160,10 @@ export default function Pizza (){
                                 </option>
                             ))
                         }
-                       
+                       <option  value={-1}></option>
                         
                     </select>
-                    {/* <div className="massa">
-                        <h1>Massa</h1>
-                        <div className="conteudoMassa">
-                            <ul className="lista">
-                                <li className="li"><Checkbox Item="Vegana"/></li>
-
-                            </ul>
-                            
-                        </div>
-                        
-                    </div> */}
+                    
                     <h2>Bordas</h2>
                     <select className="borda"  onChange={selectBorda}>
                         
@@ -135,29 +173,9 @@ export default function Pizza (){
                                     {borda.nome +" R$ " + borda.preco}
                                 </option>))
                         }
-                        
+                        <option  value={-1}></option>
                     </select>
 
-                    {/* <div className="borda">
-                        <h1>Borda</h1>
-                        <div className="conteudoBorda">
-                            <ul className="lista">
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            </ul>
-                            
-                        </div>
-                    </div> */}
             
                     <h2>Recheio</h2>
                     <div className="recheio">
@@ -170,18 +188,6 @@ export default function Pizza (){
                                 </li>
                             ))}
 
-                            {/* <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li>
-                            <li className="li"><Checkbox Item="teste " /> </li> */}
                                 
                             </ul>
                             
@@ -192,7 +198,7 @@ export default function Pizza (){
                 <div className="direita">
                     
                         <h1>Valor R$: {total.toFixed(2)}</h1>
-                    <button className="botaoFinalizar">Adicionar ao pedido</button>
+                    <button className="botaoFinalizar" onClick={()=>adicionarMinhaPizza()}>Adicionar ao pedido</button>
                 </div>
             </div>
             

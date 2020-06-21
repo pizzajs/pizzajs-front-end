@@ -4,7 +4,7 @@ import Cabecalho from '../../utils/cabecalho';
 import './styles.css';
 
 import { AdicionarBebida } from '../../store/modules/pedido/action'
-
+import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 import api from '../../services/api';
 import { useDispatch, useSelector } from 'react-redux';
 import history from '../../services/history';
@@ -26,33 +26,16 @@ export default function Bebida() {
 
     }, [])
 
-    function adicionacarrinho() {
-        //console.log(item, valortotal)
-        dispatch(AdicionarBebida(item, valortotal));
+    async function adicionacarrinho() {
+
+        await dispatch(AdicionarBebida(item, valortotal));
         history.push('/pedido')
     }
 
-    function adicionacarrinhocontinuarcomprando() {
-        dispatch(AdicionarBebida(item));
+    async function adicionacarrinhocontinuarcomprando() {
+        await dispatch(AdicionarBebida(item, valortotal));
         history.push('/home')
     }
-
-    function adicionabebida(bebida, preco) {
-        if (item.find(beb => beb == bebida)) {
-            let aux = item
-            const posicao = aux.indexOf(bebida)
-            aux.splice(posicao, 1)
-            setItem(aux)
-            setValortotal(valortotal - preco)
-        } else {
-            let aux = item
-            aux.push(bebida)
-            setItem(aux)
-            setValortotal(valortotal + preco)
-        }
-
-    }
-
 
     return (
         <div>
@@ -65,10 +48,12 @@ export default function Bebida() {
                     <ul className="bebidas">
                         {bebidas.map(bebida => (
                             <li key={bebida.id} className="nomebebidas">
-                                <label className="container">{bebida.nome}
-                                    <input type="checkbox" value={bebida} onClick={() => adicionabebida(bebida.nome, bebida.preco)} />
-                                    <span className="checkmark"></span>
-                                </label>
+                                <div className="botoesBebidas">
+                                    <h2 className="bebida" >{bebida.nome}</h2>
+                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => { }} />
+                                    <h4 className="quantidadeBebida">0</h4>
+                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => { }} />
+                                </div>
                             </li>
                         ))}
                     </ul>

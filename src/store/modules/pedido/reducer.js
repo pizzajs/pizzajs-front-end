@@ -3,8 +3,14 @@ import produce from 'immer';
 const inicial_state = {
      preco: 0,
      pizzas: {},
+     bebidas: [
+         { 
+            id : 0,
+            nome: '',
+            preco: 0}
+     ],
      pizzas_ids:[],
-     pizzas_customizadas:[],
+     pizzas_customizadas:{},
      bebidas: [],
      bebidas_ids:[],
      pedido_ativo: false
@@ -57,7 +63,16 @@ export default function pedido(state= inicial_state, actions){
                 }
 
             }
+            
+        
+        case 'ADD_PIZZA_CUSTOM':
+            console.log(actions.payload.pizza.nome,actions.payload.pizza.ids, actions.payload.pizza.preco)
+            return produce(state, draft => {
+                draft.pizzas_customizadas = state.pizzas_customizadas,
+                draft.preco += actions.payload.pizza.preco,
+                draft.pizzas_customizadas[actions.payload.pizza.nome] = { ingredientesIds: actions.payload.pizza.ids, ingredientes:actions.payload.pizza.ingredientes ,valor: actions.payload.pizza.preco }
 
+            })
 
 
         case 'ADD_BEBIDA':
@@ -67,18 +82,17 @@ export default function pedido(state= inicial_state, actions){
             })
         case 'REMOVE_BEBIDA':
             return produce(state, draft => {
-                //console.log('entrou')
-                //console.log(state.bebidas)
-                //console.log(actions.payload.index)
                 let Arraybebidas = state.bebidas.slice()
                 Arraybebidas.splice(actions.payload.index, 1)
                 draft.bebidas = Arraybebidas
+                draft.preco -= actions.payload.valor
             })
         case 'SIGN-OUT':
             return produce(state, draft => {
                 draft.preco = 0,
                 draft.pizzas =  {},
                 draft.pizzas_ids =[],
+                draft.pizzas_customizadas = {},
                 draft.bebidas =  [],
                 draft.pedido_ativo = false
             })

@@ -83,7 +83,7 @@
 .produto .caixaPricipal .caixas .caixapizza .pizzas ul{
     margin-top: 5%;
     font-family: 'Reem Kufi', sans-serif;
-    font-size: 150%;
+    /* font-size: 150%; */
 }
 
 .produto .caixaPricipal .caixas .caixapizza .pizzas li{
@@ -92,7 +92,7 @@
     display: flex;
     margin-left: 25%;
     justify-content: space-between;
-    font-size: 130%;
+    /* font-size: 130%; */
     
 }
 
@@ -222,16 +222,20 @@
     .produto .caixaPricipal .caixas .caixapizza .pizzas ul{
         margin-top: 5%;
         font-family: 'Reem Kufi', sans-serif;
-        font-size: 150%;
+        /* font-size: 150%; */
     }
     
+    .lista{
+        margin-left: 25%;
+
+    }
     .produto .caixaPricipal .caixas .caixapizza .pizzas li{
         list-style: none;
         margin-top: 2%;
         display: flex;
         margin-left: 25%;
         justify-content: space-between;
-        font-size: 130%;
+        /* font-size: 130%; */
         
     }
     
