@@ -52,16 +52,21 @@ export default function Bebida() {
         let quantidadeDeBebidas = [ ...quantidadeBebida]
         quantidadeDeBebidas[id] += 1
         setQuantidadeBebida(quantidadeDeBebidas)
-        console.log(preco)
         setValortotal(valortotal + preco)
     }
 
     function RemoverBebida(id, preco) {
         let quantidadeDeBebidas = [ ...quantidadeBebida]
+        
+        if(quantidadeDeBebidas[id] === 0){
+            return
+        }
+
         quantidadeDeBebidas[id] -= 1
         setQuantidadeBebida(quantidadeDeBebidas)
         setValortotal(valortotal - preco)
     }
+    
     return (
         <div>
             <div className="cabecalho">
