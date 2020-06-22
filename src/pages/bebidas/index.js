@@ -52,14 +52,15 @@ export default function Bebida() {
         let quantidadeDeBebidas = [ ...quantidadeBebida]
         quantidadeDeBebidas[id] += 1
         setQuantidadeBebida(quantidadeDeBebidas)
-        
+        console.log(preco)
+        setValortotal(valortotal + preco)
     }
 
     function RemoverBebida(id, preco) {
         let quantidadeDeBebidas = [ ...quantidadeBebida]
         quantidadeDeBebidas[id] -= 1
         setQuantidadeBebida(quantidadeDeBebidas)
-        
+        setValortotal(valortotal - preco)
     }
     return (
         <div>
@@ -74,9 +75,9 @@ export default function Bebida() {
                             <li key={bebida.id} className="nomebebidas">
                                 <div className="botoesBebidas">
                                     <h2 className="bebida" >{bebida.nome}</h2>
-                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => RemoverBebida(bebida.id, bebida.precopreco)}/>
+                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => RemoverBebida(bebida.id, bebida.preco)}/>
                                          <h4 className="quantidadeBebida">{quantidadeBebida[bebida.id]}</h4>
-                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarBebida(bebida.id, bebida.precopreco)} />
+                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarBebida(bebida.id, bebida.preco)} />
                                 </div>
                             </li>
                         ))}
