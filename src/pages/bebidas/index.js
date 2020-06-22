@@ -14,29 +14,46 @@ export default function Bebida() {
     const valorpedido = useSelector(state => state.pedido.preco)
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
-    const [item, setItem] = useState([]);
-
+    //const [item, setItem] = useState([]);
+    const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
     const dispatch = useDispatch();
 
     useEffect(() => {
+
+        let bebidaquantidade = [ ...quantidadeBebida]
+
         api.get('bebidas').then(res => {
             setBebidas(res.data)
             setValortotal(valorpedido)
-        })
+            
+            res.data.map(bebida => {
+                bebidaquantidade[bebida.id] = 0
+            })
 
+            setQuantidadeBebida(bebidaquantidade)
+        })
+            
     }, [])
+
+    
 
     async function adicionacarrinho() {
 
-        await dispatch(AdicionarBebida(item, valortotal));
-        history.push('/pedido')
+        //await dispatch(AdicionarBebida(item, valortotal));
+        //history.push('/pedido')
     }
 
     async function adicionacarrinhocontinuarcomprando() {
-        await dispatch(AdicionarBebida(item, valortotal));
-        history.push('/home')
+        //await dispatch(AdicionarBebida(item, valortotal));
+        //history.push('/home')
     }
 
+    function AdicionarBebida(id, preco) {
+        let quantidadeDeBebidas = [ ...quantidadeBebida]
+        quantidadeDeBebidas[id] += 1
+        setQuantidadeBebida(quantidadeDeBebidas)
+        
+    }
     return (
         <div>
             <div className="cabecalho">
@@ -50,9 +67,9 @@ export default function Bebida() {
                             <li key={bebida.id} className="nomebebidas">
                                 <div className="botoesBebidas">
                                     <h2 className="bebida" >{bebida.nome}</h2>
-                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => { }} />
-                                    <h4 className="quantidadeBebida">0</h4>
-                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => { }} />
+                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => {}}/>
+                                         <h4 className="quantidadeBebida">{quantidadeBebida[bebida.id]}</h4>
+                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarBebida(bebida.id, bebida.precopreco)} />
                                 </div>
                             </li>
                         ))}
