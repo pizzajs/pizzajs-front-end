@@ -38,10 +38,14 @@
 }
 
 .caixabebidas .caixaesquerda .bebidas {
-    margin-top: 10%;
+    margin-top: 7%;
     font-family: 'Reem Kufi', sans-serif;
     font-size: 150%;
     list-style: none;
+}
+
+.caixabebidas .caixaesquerda .bebidas .nomebebidas{
+    margin-top: 4%;
 }
 
 .caixabebidas .caixadireita .valor {
@@ -92,7 +96,7 @@
 }
 
 .quantidadeBebida {
-    margin-top: 0.5%;
+    margin-top: 1.8%;
     font-size: 120%;
 }
 
