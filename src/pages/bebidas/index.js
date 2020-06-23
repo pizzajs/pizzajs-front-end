@@ -12,13 +12,13 @@ import history from '../../services/history';
 export default function Bebida() {
 
     const valorpedido = useSelector(state => state.pedido.preco)
+    const stateQuantidadeBebida = useSelector(state => state.pedido.bebidas)
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         let bebidaquantidade = [ ...quantidadeBebida]
 
         api.get('bebidas').then(res => {
@@ -26,16 +26,20 @@ export default function Bebida() {
             setValortotal(valorpedido)
             
             res.data.map(bebida => {
-                bebidaquantidade[bebida.id] = 0
-            })
 
+                if(stateQuantidadeBebida[bebida.id] != 0){
+                    bebidaquantidade[bebida.id] = stateQuantidadeBebida[bebida.id]
+                }else{
+                    bebidaquantidade[bebida.id] = 0
+                }
+                
+            })
             setQuantidadeBebida(bebidaquantidade)
         })
             
     }, [])
 
     async function adicionacarrinho() {
-        console.log(quantidadeBebida)
         await dispatch(AdicionarBebida(quantidadeBebida, valortotal));
         history.push('/pedido')
     }

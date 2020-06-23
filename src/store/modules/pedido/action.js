@@ -32,7 +32,6 @@ export function RemoverPizza(id) {
 // }
 
 export function AdicionarBebida(bebida, valor) {
-    console.log('entrou')
     return {
         type: 'ADD_BEBIDA',
         payload: { bebida, valor }

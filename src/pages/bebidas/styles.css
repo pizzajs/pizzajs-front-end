@@ -92,11 +92,10 @@
 
 .botoesBebidas{
     display: flex;
-    
 }
 
 .quantidadeBebida {
-    margin-top: 1.8%;
+    margin-top: 1%;
     font-size: 120%;
 }
 
