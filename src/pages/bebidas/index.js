@@ -14,7 +14,6 @@ export default function Bebida() {
     const valorpedido = useSelector(state => state.pedido.preco)
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
-    //const [item, setItem] = useState([]);
     const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
     const dispatch = useDispatch();
 
@@ -35,15 +34,13 @@ export default function Bebida() {
             
     }, [])
 
-    
-
     async function adicionacarrinho() {
         console.log(quantidadeBebida)
         await dispatch(AdicionarBebida(quantidadeBebida, valortotal));
         history.push('/pedido')
     }
 
-    function adicionacarrinhocontinuarcomprando() {
+    async function adicionacarrinhocontinuarcomprando() {
         await dispatch(AdicionarBebida(item, valortotal));
         history.push('/home')
     }
