@@ -3,12 +3,7 @@ import produce from 'immer';
 const inicial_state = {
      preco: 0,
      pizzas: [],
-     bebidas: [
-         { 
-            id : 0,
-            nome: '',
-            preco: 0}
-     ],
+     bebidas: [],
      pizzas_ids:[],
      pizzas_customizadas:[],
      bebidas: [],

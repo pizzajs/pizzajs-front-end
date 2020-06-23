@@ -38,17 +38,17 @@ export default function Bebida() {
     
 
     async function adicionacarrinho() {
-
-        //await dispatch(AdicionarBebida(item, valortotal));
-        //history.push('/pedido')
+        console.log(quantidadeBebida)
+        await dispatch(AdicionarBebida(quantidadeBebida, valortotal));
+        history.push('/pedido')
     }
 
-    async function adicionacarrinhocontinuarcomprando() {
-        //await dispatch(AdicionarBebida(item, valortotal));
-        //history.push('/home')
+    function adicionacarrinhocontinuarcomprando() {
+        await dispatch(AdicionarBebida(item, valortotal));
+        history.push('/home')
     }
 
-    function AdicionarBebida(id, preco) {
+    function AdicionarItem(id, preco) {
         let quantidadeDeBebidas = [ ...quantidadeBebida]
         quantidadeDeBebidas[id] += 1
         setQuantidadeBebida(quantidadeDeBebidas)
@@ -82,7 +82,7 @@ export default function Bebida() {
                                     <h2 className="bebida" >{bebida.nome}</h2>
                                     <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => RemoverBebida(bebida.id, bebida.preco)}/>
                                          <h4 className="quantidadeBebida">{quantidadeBebida[bebida.id]}</h4>
-                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarBebida(bebida.id, bebida.preco)} />
+                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarItem(bebida.id, bebida.preco)} />
                                 </div>
                             </li>
                         ))}
@@ -91,8 +91,8 @@ export default function Bebida() {
                 <div className="caixadireita">
                     <h1 className="valor">Valor Total: R${valortotal}</h1>
                     <div className="botoes">
-                        <button onClick={adicionacarrinhocontinuarcomprando} className="botaopizza">Adicionar pizza</button>
-                        <button onClick={adicionacarrinho} className="botaofinalizar">Adicionar ao carrinho</button>
+                        <button onClick={() => adicionacarrinhocontinuarcomprando()} className="botaopizza">Adicionar pizza</button>
+                        <button onClick={() => adicionacarrinho()} className="botaofinalizar">Adicionar ao carrinho</button>
                     </div>
                 </div>
             </div>
