@@ -61,9 +61,10 @@ export default function Pizza (){
     }
     function selectBorda(event){
         const bordaInfo = event.target.value.split(',');
+        console.log(bordaInfo)
         if(bordaInfo[0] !== "-1"){
             setAuxBorda(Number(bordaInfo[1]))
-            setBordaSelecionada(String(bordaInfo[0], bordaInfo[2]));
+            setBordaSelecionada([String(bordaInfo[0]), bordaInfo[2]]);
             setTotal(Number(bordaInfo[1]) + auxMassa + auxRecheio );
         }
         
@@ -133,8 +134,17 @@ export default function Pizza (){
         recheioSelecionado.map(rec =>{
             pizzaInfo[rec] = quantidade[rec]
         })
-        const ingredientesIds = { nome: nomePizza, ids:[Number(massaSelecionada[0]), Number(bordaSelecionada[0]),...recheioSelecionado], massa: massaSelecionada[1], borda: bordaSelecionada[1], ingredientes: pizzaInfo, preco: total};
-        dispatch( AdicionarPizzaCustomizada(ingredientesIds));
+        
+        const ingredientesInformacoes = 
+            {
+                nome: nomePizza, ids:[Number(massaSelecionada[0]), Number(bordaSelecionada[0]),...recheioSelecionado], 
+                massa: massaSelecionada[1],
+                borda: bordaSelecionada[1], 
+                recheio: pizzaInfo, 
+                preco: total
+            };
+            
+        dispatch( AdicionarPizzaCustomizada(ingredientesInformacoes));
         alert("Pizza criada com sucesso!");
     }
 
@@ -155,7 +165,7 @@ export default function Pizza (){
                             massas.map(massa => ( 
                                 <option key={massa.id} 
                                 className="li"
-                                value={[massa.id, massa.preco]}>
+                                value={[massa.id, massa.preco, massa.nome]}>
                                    {massa.nome +" R$ " + massa.preco}
                                 </option>
                             ))
@@ -169,7 +179,7 @@ export default function Pizza (){
                         
                         {
                             bordas.map(borda => ( 
-                                <option className="li" key={borda.id} value={[borda.id, borda.preco]}>
+                                <option className="li" key={borda.id} value={[borda.id, borda.preco, borda.nome]}>
                                     {borda.nome +" R$ " + borda.preco}
                                 </option>))
                         }

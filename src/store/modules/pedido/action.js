@@ -15,11 +15,16 @@ export function AdicionarPizza(pizza) {
 }
 
 export function AdicionarPizzaCustomizada(pizza){
-    console.log(pizza);
-   
     return {
         type: 'ADD_PIZZA_CUSTOM',
         payload: {pizza}
+    }
+}
+
+export function DeletarPizzaCustomizada(nome){
+    return {
+        type: 'DELETE_PIZZA_CUSTOM',
+        payload: {nome}
     }
 }
 

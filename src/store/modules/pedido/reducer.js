@@ -1,5 +1,15 @@
 import produce from 'immer';
 
+function removeKey(chave, dicionario){
+    let aux = {};
+    for(var key in dicionario){
+        if(key !==chave){
+            aux[key] = dicionario[key];
+        }
+    }
+    return aux;
+}
+
 const inicial_state = {
      preco: 0,
      pizzas: {},
@@ -24,7 +34,7 @@ export default function pedido(state= inicial_state, actions){
             if(state.pizzas_ids.includes(actions.payload.pizza.id)){
                 return produce(state, draft => {
                     draft.pizzas_ids = [...state.pizzas_ids],
-                    draft.preco += actions.payload.pizza.preco,
+                    draft.preco = state.preco + actions.payload.pizza.preco,
                     draft.pizzas = state.pizzas,
                     draft.pizzas[actions.payload.pizza.id].quantidade +=1 
                 })
@@ -33,32 +43,34 @@ export default function pedido(state= inicial_state, actions){
             else{
                 return produce(state, draft => {
                     draft.pizzas_ids = [...state.pizzas_ids, actions.payload.pizza.id],
-                    draft.preco += actions.payload.pizza.preco,
+                    draft.preco = state.preco + actions.payload.pizza.preco,
                     draft.pizzas = state.pizzas,
                     draft.pizzas[actions.payload.pizza.id] = {sabor: actions.payload.pizza.sabor, ingredientes:actions.payload.pizza.ingredientes_padrao, quantidade: 1 , valor: actions.payload.pizza.preco }
                 })
             }
             break;
         case 'REMOVE_PIZZA':
-            if(!state.pizzas_ids.includes(actions.payload.id)){
+            const condicao = Boolean(state.pizzas_ids.includes(actions.payload.id));
+            console.log(condicao, state.pizzas_ids);
+            if(!state.pizzas_ids.includes(Number(actions.payload.id))){
                 alert('Não existe essa pizza')
                 return state;
             }
             else{
-                if(states.pizza[actions.payload.id].quantidade > 1){
+                if(state.pizzas[actions.payload.id].quantidade > 1){
                     return produce(state, draft => {
                         draft.pizzas_ids = [...state.pizzas_ids],
-                        draft.preco -= state.pizzas[actions.payload.id].preco,
+                        draft.preco = state.preco - state.pizzas[actions.payload.id].valor,
                         draft.pizzas = state.pizzas,
                         draft.pizzas[actions.payload.id].quantidade -=1
                     })
                 }
                 else{
                     return produce(state, draft => {
-                        draft.pizzas_ids = [...state.pizzas_ids].filter(item => item !== actions.payload.id),
-                        draft.preco -= state.pizzas[actions.payload.id].preco,
+                        draft.pizzas_ids =state.pizzas_ids.filter(item => item !== Number(actions.payload.id)),
+                        draft.preco = state.preco - state.pizzas[actions.payload.id].valor,
                         draft.pizzas = state.pizzas,
-                        draft.pizzas = delete draft.pizzas[actions.payload.pizza.id]
+                        draft.pizzas = removeKey(actions.payload.id, draft.pizzas)
                     })
                 }
 
@@ -66,12 +78,19 @@ export default function pedido(state= inicial_state, actions){
             
         
         case 'ADD_PIZZA_CUSTOM':
-            console.log(actions.payload.pizza.nome,actions.payload.pizza.ids, actions.payload.pizza.preco)
             return produce(state, draft => {
                 draft.pizzas_customizadas = state.pizzas_customizadas,
                 draft.preco += actions.payload.pizza.preco,
-                draft.pizzas_customizadas[actions.payload.pizza.nome] = { ingredientesIds: actions.payload.pizza.ids, ingredientes:actions.payload.pizza.ingredientes ,valor: actions.payload.pizza.preco }
+                draft.pizzas_customizadas[actions.payload.pizza.nome] = { ingredientesIds: actions.payload.pizza.ids, massa:actions.payload.pizza.massa, borda: actions.payload.pizza.borda, recheio:actions.payload.pizza.recheio ,valor: actions.payload.pizza.preco }
 
+            });
+            break;
+
+        case 'DELETE_PIZZA_CUSTOM':
+            return produce(state, draft => {
+                draft.pizzas_customizadas = state.pizzas_customizadas,
+                draft.preco = state.preco - state.pizzas_customizadas[actions.payload.nome].valor,
+                draft.pizzas_customizadas= removeKey(actions.payload.nome, draft.pizzas_customizadas)
             })
 
 
