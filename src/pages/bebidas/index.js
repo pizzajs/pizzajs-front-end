@@ -51,7 +51,8 @@ export default function Bebida() {
     }
 
     async function adicionacarrinhocontinuarcomprando() {
-        await dispatch(AdicionarBebida(quantidadeBebida, valortotal));
+        let valor = valortotal - valorpedido
+        await dispatch(AdicionarBebida(quantidadeBebida, valor));
         history.push('/home')
     }
 
