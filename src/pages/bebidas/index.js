@@ -13,6 +13,7 @@ export default function Bebida() {
 
     const valorpedido = useSelector(state => state.pedido.preco)
     const stateQuantidadeBebida = useSelector(state => state.pedido.bebidas)
+
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
@@ -20,27 +21,33 @@ export default function Bebida() {
 
     useEffect(() => {
         let bebidaquantidade = [ ...quantidadeBebida]
+        let somaQuantidadeBebida = 0
 
         api.get('bebidas').then(res => {
             setBebidas(res.data)
             setValortotal(valorpedido)
             
-            res.data.map(bebida => {
-
-                if(stateQuantidadeBebida[bebida.id] != 0){
-                    bebidaquantidade[bebida.id] = stateQuantidadeBebida[bebida.id]
-                }else{
-                    bebidaquantidade[bebida.id] = 0
-                }
-                
+            stateQuantidadeBebida.map(quantidadeBebida => {
+                somaQuantidadeBebida += stateQuantidadeBebida[quantidadeBebida]     
             })
+
+            if( somaQuantidadeBebida != 0){
+                bebidaquantidade = stateQuantidadeBebida
+            }else {
+                res.data.map(bebida => {
+                    bebidaquantidade[bebida.id] = 0
+                })
+            }
+            
             setQuantidadeBebida(bebidaquantidade)
         })
             
     }, [])
 
     async function adicionacarrinho() {
-        await dispatch(AdicionarBebida(quantidadeBebida, valortotal));
+
+        let valor = valortotal - valorpedido
+        await dispatch(AdicionarBebida(quantidadeBebida, valor));
         history.push('/pedido')
     }
 
