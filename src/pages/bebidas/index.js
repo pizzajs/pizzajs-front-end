@@ -22,13 +22,12 @@ export default function Bebida() {
     useEffect(() => {
         let bebidaquantidade = [ ...quantidadeBebida]
         let somaQuantidadeBebida = 0
-
         api.get('bebidas').then(res => {
             setBebidas(res.data)
             setValortotal(valorpedido)
             
             stateQuantidadeBebida.map(quantidadeBebida => {
-                somaQuantidadeBebida += stateQuantidadeBebida[quantidadeBebida]     
+                somaQuantidadeBebida += quantidadeBebida    
             })
 
             if( somaQuantidadeBebida != 0){
@@ -52,7 +51,7 @@ export default function Bebida() {
     }
 
     async function adicionacarrinhocontinuarcomprando() {
-        await dispatch(AdicionarBebida(item, valortotal));
+        await dispatch(AdicionarBebida(quantidadeBebida, valortotal));
         history.push('/home')
     }
 
