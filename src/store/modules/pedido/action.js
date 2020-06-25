@@ -14,6 +14,20 @@ export function AdicionarPizza(pizza) {
     }
 }
 
+export function AdicionarPizzaCustomizada(pizza){
+    return {
+        type: 'ADD_PIZZA_CUSTOM',
+        payload: {pizza}
+    }
+}
+
+export function DeletarPizzaCustomizada(nome){
+    return {
+        type: 'DELETE_PIZZA_CUSTOM',
+        payload: {nome}
+    }
+}
+
 export function RemoverPizza(id) {
     return {
         type: 'REMOVE_PIZZA',
