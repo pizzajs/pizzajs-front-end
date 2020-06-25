@@ -12,31 +12,69 @@ import history from '../../services/history';
 export default function Bebida() {
 
     const valorpedido = useSelector(state => state.pedido.preco)
+    const stateQuantidadeBebida = useSelector(state => state.pedido.bebidas)
+
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
-    const [item, setItem] = useState([]);
-
+    const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
     const dispatch = useDispatch();
 
     useEffect(() => {
+        let bebidaquantidade = [ ...quantidadeBebida]
+        let somaQuantidadeBebida = 0
         api.get('bebidas').then(res => {
             setBebidas(res.data)
             setValortotal(valorpedido)
-        })
+            
+            stateQuantidadeBebida.map(quantidadeBebida => {
+                somaQuantidadeBebida += quantidadeBebida    
+            })
 
+            if( somaQuantidadeBebida != 0){
+                bebidaquantidade = stateQuantidadeBebida
+            }else {
+                res.data.map(bebida => {
+                    bebidaquantidade[bebida.id] = 0
+                })
+            }
+            
+            setQuantidadeBebida(bebidaquantidade)
+        })
+            
     }, [])
 
     async function adicionacarrinho() {
 
-        await dispatch(AdicionarBebida(item, valortotal));
+        let valor = valortotal - valorpedido
+        await dispatch(AdicionarBebida(quantidadeBebida, valor));
         history.push('/pedido')
     }
 
     async function adicionacarrinhocontinuarcomprando() {
-        await dispatch(AdicionarBebida(item, valortotal));
+        let valor = valortotal - valorpedido
+        await dispatch(AdicionarBebida(quantidadeBebida, valor));
         history.push('/home')
     }
 
+    function AdicionarItem(id, preco) {
+        let quantidadeDeBebidas = [ ...quantidadeBebida]
+        quantidadeDeBebidas[id] += 1
+        setQuantidadeBebida(quantidadeDeBebidas)
+        setValortotal(valortotal + preco)
+    }
+
+    function RemoverBebida(id, preco) {
+        let quantidadeDeBebidas = [ ...quantidadeBebida]
+        
+        if(quantidadeDeBebidas[id] === 0){
+            return
+        }
+
+        quantidadeDeBebidas[id] -= 1
+        setQuantidadeBebida(quantidadeDeBebidas)
+        setValortotal(valortotal - preco)
+    }
+    
     return (
         <div>
             <div className="cabecalho">
@@ -50,9 +88,9 @@ export default function Bebida() {
                             <li key={bebida.id} className="nomebebidas">
                                 <div className="botoesBebidas">
                                     <h2 className="bebida" >{bebida.nome}</h2>
-                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => { }} />
-                                    <h4 className="quantidadeBebida">0</h4>
-                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => { }} />
+                                    <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => RemoverBebida(bebida.id, bebida.preco)}/>
+                                         <h4 className="quantidadeBebida">{quantidadeBebida[bebida.id]}</h4>
+                                    <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarItem(bebida.id, bebida.preco)} />
                                 </div>
                             </li>
                         ))}
@@ -61,8 +99,8 @@ export default function Bebida() {
                 <div className="caixadireita">
                     <h1 className="valor">Valor Total: R${valortotal}</h1>
                     <div className="botoes">
-                        <button onClick={adicionacarrinhocontinuarcomprando} className="botaopizza">Adicionar pizza</button>
-                        <button onClick={adicionacarrinho} className="botaofinalizar">Adicionar ao carrinho</button>
+                        <button onClick={() => adicionacarrinhocontinuarcomprando()} className="botaopizza">Adicionar pizza</button>
+                        <button onClick={() => adicionacarrinho()} className="botaofinalizar">Adicionar ao carrinho</button>
                     </div>
                 </div>
             </div>
