@@ -48,7 +48,6 @@ export default function pedido(state= inicial_state, actions){
                     draft.pizzas[actions.payload.pizza.id] = {sabor: actions.payload.pizza.sabor, ingredientes:actions.payload.pizza.ingredientes_padrao, quantidade: 1 , valor: actions.payload.pizza.preco }
                 })
             }
-            break;
         case 'REMOVE_PIZZA':
             const condicao = Boolean(state.pizzas_ids.includes(actions.payload.id));
             console.log(condicao, state.pizzas_ids);
@@ -84,7 +83,6 @@ export default function pedido(state= inicial_state, actions){
                 draft.pizzas_customizadas[actions.payload.pizza.nome] = { ingredientesIds: actions.payload.pizza.ids, massa:actions.payload.pizza.massa, borda: actions.payload.pizza.borda, recheio:actions.payload.pizza.recheio ,valor: actions.payload.pizza.preco }
 
             });
-            break;
 
         case 'DELETE_PIZZA_CUSTOM':
             return produce(state, draft => {

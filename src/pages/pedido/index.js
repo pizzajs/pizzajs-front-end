@@ -12,8 +12,22 @@ export default function Pedido() {
     
     const {pizzas,pizzas_customizadas, bebidas, preco} = useSelector(state => state.pedido)
     const valorpedido = preco;
-    
+    const [bebidasCadastradas, setBebidasCadastradas] = useState([]);
+    //const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
 
+    useEffect(() => {
+        api.get('bebidas').then(res => {
+            setBebidasCadastradas(res.data)
+            
+        })
+
+    //    bebidas.map(bebida => {
+    //         if( bebida != 0) {
+                
+    //         }
+    //    })
+            
+    }, [])
    
     function RenderPizzas(){
         let aux =[];
