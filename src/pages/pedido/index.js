@@ -13,22 +13,18 @@ export default function Pedido() {
     const {pizzas,pizzas_customizadas, bebidas, preco} = useSelector(state => state.pedido)
     const valorpedido = preco;
     const [bebidasCadastradas, setBebidasCadastradas] = useState([]);
-    const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
-
+   
+    
     
 
     useEffect(() => {
-        api.get('bebidas').then(res => {
-            setBebidasCadastradas(res.data)
-        })
+        console.log(bebidas)
 
-        // bebidas.map(bebida => {
-        //     console.log(bebidasCadastradas)
-        // })
         
     }, [])
-   
+
     function RenderPizzas(){
+
         let aux =[];
         for( var pizza in pizzas){
             aux.push( 

@@ -17,8 +17,9 @@ export default function Bebida() {
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
+    const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
     const dispatch = useDispatch();
-    let bebidaId = []
+    
 
     useEffect(() => {
         let bebidaquantidade = [ ...quantidadeBebida]
@@ -44,9 +45,11 @@ export default function Bebida() {
             
     }, [])
 
-    function adicionarIdsBebidas() {
+    async function adicionarIdsBebidas() {
         let index = 0
-        
+        let bebidaId = []
+        let teste = []
+
         quantidadeBebida.map(bebida => {
                 if( bebida != 0) {
                     for(var aux  =1 ; aux <= bebida; aux++){
@@ -55,18 +58,24 @@ export default function Bebida() {
                 }
                 index++
         })
+
+        bebidaId.map(bebida => {
+            teste.push(bebidas[bebida])
+        })
+        console.log(teste)
+        await setBebidasEscolhidas(teste)
     }
     async function adicionacarrinho() {
         adicionarIdsBebidas()
         let valor = valortotal - valorpedido
-        await dispatch(AdicionarBebida(bebidaId, valor));
+        await dispatch(AdicionarBebida(bebidasEscolhidas, valor));
         history.push('/pedido')
     }
 
     async function adicionacarrinhocontinuarcomprando() {
         adicionarIdsBebidas()
         let valor = valortotal - valorpedido
-        await dispatch(AdicionarBebida(quantidadeBebida, valor));
+        await dispatch(AdicionarBebida(bebidasEscolhidas, valor));
         history.push('/home')
     }
 
