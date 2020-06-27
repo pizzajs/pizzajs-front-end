@@ -15,25 +15,17 @@ export default function Pedido() {
     const [bebidasCadastradas, setBebidasCadastradas] = useState([]);
     const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
 
-    let index = 0
+    
 
     useEffect(() => {
         api.get('bebidas').then(res => {
             setBebidasCadastradas(res.data)
-            
-        })
-        let bebidaId = []
-        
-        bebidas.map(bebida => {
-                if( bebida != 0) {
-                    for(var aux  =1 ; aux <= bebida; aux++){
-                        bebidaId.push(index)
-                    }
-                }
-                index++
         })
 
-       setBebidasEscolhidas(bebidaId)
+        // bebidas.map(bebida => {
+        //     console.log(bebidasCadastradas)
+        // })
+        
     }, [])
    
     function RenderPizzas(){
@@ -65,7 +57,6 @@ export default function Pedido() {
 
     }
     function deletarPizza(id){
-        // console.log(id)
         dispatch(RemoverPizza(id));
         alert("Pizza deletada!");
     }
