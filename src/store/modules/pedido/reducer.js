@@ -13,12 +13,6 @@ function removeKey(chave, dicionario){
 const inicial_state = {
      preco: 0,
      pizzas: {},
-     bebidas: [
-         { 
-            id : 0,
-            nome: '',
-            preco: 0}
-     ],
      pizzas_ids:[],
      pizzas_customizadas:{},
      bebidas: [],

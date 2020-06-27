@@ -5,23 +5,13 @@ import { MdDelete } from "react-icons/md";
 import Cabecalho from '../../utils/cabecalho/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoverBebida, DeletarPizzaCustomizada, RemoverPizza } from '../../store/modules/pedido/action';
-import api from '../../services/api';
 export default function Pedido() {
     
     const dispatch = useDispatch();
     
     const {pizzas,pizzas_customizadas, bebidas, preco} = useSelector(state => state.pedido)
     const valorpedido = preco;
-    const [bebidasCadastradas, setBebidasCadastradas] = useState([]);
-   
-    
-    
-
-    useEffect(() => {
-        console.log(bebidas)
-
-        
-    }, [])
+    let key = 0
 
     function RenderPizzas(){
 
@@ -122,9 +112,9 @@ export default function Pedido() {
                         <div className="bebida">
                             <h1>Bebidas</h1>
                             <ul>
-                                {/* {bebidas.map((bebida, index=0) => (
-                                    <li key={bebida.id}> {bebida.nome} <MdDelete className="lixeira" onClick={() => deletarbebida(index++, bebida.preco)}/></li>
-                                ))}                                     */}
+                                {bebidas.map((bebida, index=0) => (
+                                    <li key={key++}> {bebida.nome} <MdDelete className="lixeira" onClick={() => deletarbebida(index++, bebida.preco)}/></li>
+                                ))}                                    
                             </ul>
                         </div>
                         <button className="redbotao">Finalizar pedido</button>

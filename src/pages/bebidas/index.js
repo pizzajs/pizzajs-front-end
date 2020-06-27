@@ -19,7 +19,8 @@ export default function Bebida() {
     const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
     const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
     const dispatch = useDispatch();
-    
+    let bebidaId = []
+    let informacoesBebidasEscolhidas = []
 
     useEffect(() => {
         let bebidaquantidade = [ ...quantidadeBebida]
@@ -32,13 +33,15 @@ export default function Bebida() {
                 somaQuantidadeBebida += quantidadeBebida    
             })
 
-            if( somaQuantidadeBebida != 0){
-                bebidaquantidade = stateQuantidadeBebida
-            }else {
-                res.data.map(bebida => {
-                    bebidaquantidade[bebida.id] = 0
-                })
-            }
+            res.data.map(bebida => {
+                bebidaquantidade[bebida.id] = 0
+            })
+
+            // if( somaQuantidadeBebida != 0){
+            //     bebidaquantidade = stateQuantidadeBebida
+            // }else {
+                
+            // }
             
             setQuantidadeBebida(bebidaquantidade)
         })
@@ -47,8 +50,8 @@ export default function Bebida() {
 
     async function adicionarIdsBebidas() {
         let index = 0
-        let bebidaId = []
-        let teste = []
+        
+
 
         quantidadeBebida.map(bebida => {
                 if( bebida != 0) {
@@ -60,21 +63,22 @@ export default function Bebida() {
         })
 
         bebidaId.map(bebida => {
-            teste.push(bebidas[bebida])
+            informacoesBebidasEscolhidas.push(bebidas[bebida])
         })
-        console.log(teste)
-        await setBebidasEscolhidas(teste)
+        console.log(informacoesBebidasEscolhidas)
+        //await setBebidasEscolhidas(informacoesBebidasEscolhidas)
     }
     async function adicionacarrinho() {
         adicionarIdsBebidas()
         let valor = valortotal - valorpedido
-        await dispatch(AdicionarBebida(bebidasEscolhidas, valor));
+        await dispatch(AdicionarBebida(informacoesBebidasEscolhidas, valor));
         history.push('/pedido')
     }
 
     async function adicionacarrinhocontinuarcomprando() {
         adicionarIdsBebidas()
         let valor = valortotal - valorpedido
+        
         await dispatch(AdicionarBebida(bebidasEscolhidas, valor));
         history.push('/home')
     }
