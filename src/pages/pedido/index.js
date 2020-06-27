@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import Cabecalho from '../../utils/cabecalho/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoverBebida, DeletarPizzaCustomizada, RemoverPizza } from '../../store/modules/pedido/action';
-
+import api from '../../services/api';
 export default function Pedido() {
     
     const dispatch = useDispatch();
@@ -13,20 +13,27 @@ export default function Pedido() {
     const {pizzas,pizzas_customizadas, bebidas, preco} = useSelector(state => state.pedido)
     const valorpedido = preco;
     const [bebidasCadastradas, setBebidasCadastradas] = useState([]);
-    //const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
+    const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
+
+    let index = 0
 
     useEffect(() => {
         api.get('bebidas').then(res => {
             setBebidasCadastradas(res.data)
             
         })
+        let bebidaId = []
+        
+        bebidas.map(bebida => {
+                if( bebida != 0) {
+                    for(var aux  =1 ; aux <= bebida; aux++){
+                        bebidaId.push(index)
+                    }
+                }
+                index++
+        })
 
-    //    bebidas.map(bebida => {
-    //         if( bebida != 0) {
-                
-    //         }
-    //    })
-            
+       setBebidasEscolhidas(bebidaId)
     }, [])
    
     function RenderPizzas(){
