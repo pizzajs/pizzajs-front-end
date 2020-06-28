@@ -8,6 +8,7 @@ import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 import api from '../../services/api';
 import { useDispatch, useSelector } from 'react-redux';
 import history from '../../services/history';
+import { signOutRequest } from '../../store/modules/auth/action';
 
 export default function Bebida() {
 
@@ -17,37 +18,48 @@ export default function Bebida() {
     const [bebidas, setBebidas] = useState([]);
     const [valortotal, setValortotal] = useState(0);
     const [quantidadeBebida, setQuantidadeBebida] = useState([0]);
-    const [bebidasEscolhidas, setBebidasEscolhidas] = useState([]);
+    
     const dispatch = useDispatch();
     let bebidaId = []
     let informacoesBebidasEscolhidas = []
 
     useEffect(() => {
-        let bebidaquantidade = [ ...quantidadeBebida]
-        let somaQuantidadeBebida = 0
-        api.get('bebidas').then(res => {
-            setBebidas(res.data)
-            setValortotal(valorpedido)
-            
-            stateQuantidadeBebida.map(quantidadeBebida => {
-                somaQuantidadeBebida += quantidadeBebida    
-            })
-
-            res.data.map(bebida => {
-                bebidaquantidade[bebida.id] = 0
-            })
-
-            // if( somaQuantidadeBebida != 0){
-            //     bebidaquantidade = stateQuantidadeBebida
-            // }else {
-                
-            // }
-            
-            setQuantidadeBebida(bebidaquantidade)
-        })
-            
+        getBebidas()
     }, [])
 
+    async function getBebidas(){
+
+        let bebidaquantidade = [ ...quantidadeBebida]
+        let somaQuantidadeBebida = 0
+        try {
+            api.get('bebidas').then(res => {
+                setBebidas(res.data)
+                setValortotal(valorpedido)
+                
+                stateQuantidadeBebida.map(quantidadeBebida => {
+                    somaQuantidadeBebida += quantidadeBebida    
+                })
+
+                res.data.map(bebida => {
+                    bebidaquantidade[bebida.id] = 0
+                })
+
+                // if( somaQuantidadeBebida != 0){
+                //     bebidaquantidade = stateQuantidadeBebida
+                // }else {
+                    
+                // }
+                
+                setQuantidadeBebida(bebidaquantidade)
+            })
+        } catch (error) {
+            if(error.response.status == 401){
+                alert('Sessão expirada!');
+                dispatch(signOutRequest());
+            }
+        }
+
+    }
     async function adicionarIdsBebidas() {
         let index = 0
         
@@ -65,9 +77,8 @@ export default function Bebida() {
         bebidaId.map(bebida => {
             informacoesBebidasEscolhidas.push(bebidas[bebida])
         })
-        console.log(informacoesBebidasEscolhidas)
-        //await setBebidasEscolhidas(informacoesBebidasEscolhidas)
     }
+
     async function adicionacarrinho() {
         adicionarIdsBebidas()
         let valor = valortotal - valorpedido
@@ -79,7 +90,7 @@ export default function Bebida() {
         adicionarIdsBebidas()
         let valor = valortotal - valorpedido
         
-        await dispatch(AdicionarBebida(bebidasEscolhidas, valor));
+        await dispatch(AdicionarBebida(informacoesBebidasEscolhidas, valor));
         history.push('/home')
     }
 

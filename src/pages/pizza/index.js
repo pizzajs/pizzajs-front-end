@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { AdicionarPizzaCustomizada } from '../../store/modules/pedido/action';
 import api from '../../services/api';
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
+import { signOutRequest } from '../../store/modules/auth/action';
 
 
 export default function Pizza (){
@@ -25,25 +26,35 @@ export default function Pizza (){
 
     useEffect(()=>{
         async function getIngredientes(){
-            const response = await api.get('/ingredientes');
-            let aux = [];
+            try {
+                const response = await api.get('/ingredientes');
+                let aux = [];
+                
+                aux = response.data.filter(item => item.tipo === 'M');
+                setMassas( aux);
+
+                aux = response.data.filter(item => item.tipo === 'B');
+                setBordas(aux);
+
+                aux = response.data.filter(item => item.tipo === 'R');
+                setRecheios(aux);
             
-            aux = response.data.filter(item => item.tipo === 'M');
-            setMassas( aux);
 
-            aux = response.data.filter(item => item.tipo === 'B');
-            setBordas(aux);
-
-            aux = response.data.filter(item => item.tipo === 'R');
-            setRecheios(aux);
-           
-
-            let qtd ={}
-            aux.map(recheio =>{
-        
-                qtd[recheio.id] ={sabor: recheio.nome , quantidade: 0}
-            })
-            setQuantidade(qtd);
+                let qtd ={}
+                aux.map(recheio =>{
+            
+                    qtd[recheio.id] ={sabor: recheio.nome , quantidade: 0}
+                })
+                setQuantidade(qtd);
+                
+            } catch (error) {
+                if(error.response.status == 401){
+                    alert('Sessão expirada!');
+                    dispatch(signOutRequest());
+                }
+                
+            }
+            
         }
 
         getIngredientes();
