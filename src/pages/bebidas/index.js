@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Cabecalho from '../../utils/cabecalho';
 import './styles.css';
-
+import { signOutRequest } from '../../store/modules/auth/action';
 import { AdicionarBebida } from '../../store/modules/pedido/action'
 import { FiPlusSquare, FiMinusSquare } from "react-icons/fi";
 import api from '../../services/api';
@@ -20,59 +20,73 @@ export default function Bebida() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let bebidaquantidade = [ ...quantidadeBebida]
-        let somaQuantidadeBebida = 0
-        api.get('bebidas').then(res => {
-            setBebidas(res.data)
-            setValortotal(valorpedido)
-            
-            stateQuantidadeBebida.map(quantidadeBebida => {
-                somaQuantidadeBebida += quantidadeBebida    
-            })
+        let bebidaquantidade = [ ...quantidadeBebida];
+        let somaQuantidadeBebida = 0;
 
-            if( somaQuantidadeBebida != 0){
-                bebidaquantidade = stateQuantidadeBebida
-            }else {
-                res.data.map(bebida => {
-                    bebidaquantidade[bebida.id] = 0
+        async function getBebidas(){
+            try {
+                const response= await api.get('bebidas');
+                setBebidas(response.data);
+                setValortotal(valorpedido);
+                
+                stateQuantidadeBebida.map(quantidadeBebida => {
+                    somaQuantidadeBebida += quantidadeBebida ;   
                 })
+
+                if( somaQuantidadeBebida != 0){
+                    bebidaquantidade = stateQuantidadeBebida;
+                }else {
+                    response.data.map(bebida => {
+                        bebidaquantidade[bebida.id] = 0;
+                    })
+                }
+                
+                setQuantidadeBebida(bebidaquantidade);
+                
+            } catch (error) {
+                if(error.response.status == 401){
+                    alert('Sessão expirada!');
+                    dispatch(signOutRequest());
+                }
+                
             }
-            
-            setQuantidadeBebida(bebidaquantidade)
-        })
+           
+        }
+
+        getBebidas();
             
     }, [])
 
     async function adicionacarrinho() {
 
-        let valor = valortotal - valorpedido
+        let valor = valortotal - valorpedido;
         await dispatch(AdicionarBebida(quantidadeBebida, valor));
         history.push('/pedido')
     }
 
     async function adicionacarrinhocontinuarcomprando() {
-        let valor = valortotal - valorpedido
+        let valor = valortotal - valorpedido;
         await dispatch(AdicionarBebida(quantidadeBebida, valor));
-        history.push('/home')
+        history.push('/home');
     }
 
     function AdicionarItem(id, preco) {
-        let quantidadeDeBebidas = [ ...quantidadeBebida]
-        quantidadeDeBebidas[id] += 1
-        setQuantidadeBebida(quantidadeDeBebidas)
-        setValortotal(valortotal + preco)
+        let quantidadeDeBebidas = [ ...quantidadeBebida];
+        quantidadeDeBebidas[id] += 1;
+        setQuantidadeBebida(quantidadeDeBebidas);
+        setValortotal(valortotal + preco);
     }
 
     function RemoverBebida(id, preco) {
-        let quantidadeDeBebidas = [ ...quantidadeBebida]
+        let quantidadeDeBebidas = [ ...quantidadeBebida];
         
         if(quantidadeDeBebidas[id] === 0){
             return
         }
 
         quantidadeDeBebidas[id] -= 1
-        setQuantidadeBebida(quantidadeDeBebidas)
-        setValortotal(valortotal - preco)
+        setQuantidadeBebida(quantidadeDeBebidas);
+        setValortotal(valortotal - preco);
     }
     
     return (

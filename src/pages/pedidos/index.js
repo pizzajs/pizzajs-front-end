@@ -1,16 +1,28 @@
 import React ,{useState, useEffect} from 'react';
 import Cabecalho from '../../utils/cabecalho';
+import { signOutRequest } from '../../store/modules/auth/action';
 import api from '../../services/api';
 import './styles.css';
+import { useDispatch } from 'react-redux';
 
 export default function Pedidos(){
     const [pedidos, setPedidos]= useState([]);
     const [total, setTotal]= useState(0);
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         async function getPedidos(){
-            const response = await api.get('/pedidos/todos');
-            setPedidos(response.data);
+            try {
+                const response = await api.get('/pedidos/todos');
+                setPedidos(response.data);
+                
+            } catch (error) {
+                if(error.response.status == 401){
+                    alert('Sessão expirada!');
+                    dispatch(signOutRequest());
+                }
+            }
+            
         }
 
         getPedidos();
