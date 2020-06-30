@@ -99,6 +99,8 @@ export default function Pedido() {
 
     function finalizarPedido() {
         buscarIdBebida()
+        dispatch(finalizarPedido(bebidaId, pizzas, pizzas_customizadas));
+        alert("Seu pedido foi concluido!");
     }
 
     return (    
