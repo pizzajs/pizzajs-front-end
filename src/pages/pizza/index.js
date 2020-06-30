@@ -25,6 +25,7 @@ export default function Pizza (){
     const dispatch = useDispatch();
 
     useEffect(()=>{
+        
         async function getIngredientes(){
             try {
                 const response = await api.get('/ingredientes');
@@ -72,7 +73,6 @@ export default function Pizza (){
     }
     function selectBorda(event){
         const bordaInfo = event.target.value.split(',');
-        console.log(bordaInfo)
         if(bordaInfo[0] !== "-1"){
             setAuxBorda(Number(bordaInfo[1]))
             setBordaSelecionada([String(bordaInfo[0]), bordaInfo[2]]);
@@ -136,7 +136,7 @@ export default function Pizza (){
     }
 
     function adicionarMinhaPizza(){
-        
+        console.log(recheios)
         if(!nomePizza  || !massaSelecionada || !bordaSelecionada || recheioSelecionado.length === 0){
             alert("Preencha e selecione as opções!");
             return
@@ -159,6 +159,7 @@ export default function Pizza (){
         alert("Pizza criada com sucesso!");
     }
 
+    
     return(
         <div className="produto">
             <header className="header">
