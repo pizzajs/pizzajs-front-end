@@ -4,7 +4,7 @@ import './styles.css';
 import { MdDelete } from "react-icons/md";
 import Cabecalho from '../../utils/cabecalho/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { RemoverBebida, DeletarPizzaCustomizada, RemoverPizza, finalizarPedido } from '../../store/modules/pedido/action';
+import { RemoverBebida, DeletarPizzaCustomizada, RemoverPizza, finalizarPedidoRequest } from '../../store/modules/pedido/action';
 export default function Pedido() {
     
     const dispatch = useDispatch();
@@ -13,10 +13,8 @@ export default function Pedido() {
     const valorpedido = preco;
     let key = 0
     let bebidaId = []
-    console.log('pizzas_ids')
-    console.log(pizzas_ids)
-    console.log('pizzas_customizadas')
-    console.log(pizzas_customizadas)
+    console.log(bebidas)
+
     function RenderPizzas(){
 
         let aux =[];
@@ -94,13 +92,11 @@ export default function Pedido() {
         bebidas.map(bebida => {
             bebidaId.push(bebida.id)
         })
-        console.log(bebidaId)
     }
 
-    function finalizarPedido() {
+    function ConcluirPedido() {
         buscarIdBebida()
-        dispatch(finalizarPedido(bebidaId, pizzas, pizzas_customizadas));
-        alert("Seu pedido foi concluido!");
+        dispatch(finalizarPedidoRequest(bebidaId, pizzas_ids, pizzas_customizadas, preco));
     }
 
     return (    
@@ -132,7 +128,7 @@ export default function Pedido() {
                                 ))}                                    
                             </ul>
                         </div>
-                        <button className="redbotao"  onClick={() => finalizarPedido()}>Finalizar pedido</button>
+                        <button className="redbotao"  onClick={() => ConcluirPedido()}>Finalizar pedido</button>
                     </span>
                 </div>
             </div>

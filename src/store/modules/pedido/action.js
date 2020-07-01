@@ -64,6 +64,14 @@ export function RemoverBebida(index, valor) {
 export function finalizarPedido() {
     return {
         type: 'FINALIZAR_PEDIDO'
+        
+    }
+}
+export function finalizarPedidoRequest(bebidaId, pizzas_ids, pizzas_customizadas, preco ) {
+    
+    return {
+        type: 'FINALIZAR_PEDIDO_REQUEST',
+        payload: { bebidaId, pizzas_ids, pizzas_customizadas, preco }
     }
 }
 
