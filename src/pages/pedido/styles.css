@@ -122,8 +122,9 @@
 }
 
 .produto .caixaPricipal .caixas .caixabebida .bebida li .lixeira{
-    margin-right: 50%;
+    margin-right: 3%;
     margin-top: 2%;
+    color: #ED0000;
 }
 
 .produto .caixaPricipal .caixas .caixabebida .redbotao {
@@ -246,6 +247,7 @@
     
     .lixeira{
         margin-right: 20px;
+        color: #ED0000;
         /* margin-right: 50%;
         margin-top: 2%; */
     }
