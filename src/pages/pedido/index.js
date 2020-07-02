@@ -112,7 +112,7 @@ export default function Pedido() {
                             <RenderPizzas />
                             <RenderPizzasCustomizadas />
                         </div>
-                        <h1 className="valortotal">Valor total: R$ {valorpedido.toFixed(2)} </h1>
+                        <h1 className="valortotal">Valor do Pedido: R$ {valorpedido.toFixed(2)} </h1>
                     </span>
                     <span className="caixabebida">
                         <div className="bebida">

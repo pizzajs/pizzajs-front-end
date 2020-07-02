@@ -125,7 +125,7 @@ export default function Bebida() {
                         {bebidas.map(bebida => (
                             <li key={bebida.id} className="nomebebidas">
                                 <div className="botoesBebidas">
-                                    <h2 className="bebida" >{bebida.nome}</h2>
+                                    <h2 className="bebida" >{`${bebida.nome} (R$ ${bebida.preco})`}</h2>
                                     <FiMinusSquare className='botaoDiminuir' size={25} onClick={() => RemoverBebida(bebida.id, bebida.preco)}/>
                                          <h4 className="quantidadeBebida">{quantidadeBebida[bebida.id]}</h4>
                                     <FiPlusSquare className='botaoAumentar' size={25} color="#red" onClick={() => AdicionarItem(bebida.id, bebida.preco)} />
@@ -135,7 +135,7 @@ export default function Bebida() {
                     </ul>
                 </div>
                 <div className="caixadireita">
-                    <h1 className="valor">Valor Total: R${valortotal}</h1>
+                    <h1 className="valor">Valor do Pedido: R${valortotal}</h1>
                     <div className="botoes">
                         <button onClick={() => adicionacarrinhocontinuarcomprando()} className="botaopizza">Adicionar pizza</button>
                         <button onClick={() => adicionacarrinho()} className="botaofinalizar">Adicionar ao carrinho</button>
