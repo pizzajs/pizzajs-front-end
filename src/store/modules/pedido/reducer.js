@@ -109,7 +109,12 @@ export default function pedido(state= inicial_state, actions){
             })
         case 'FINALIZAR_PEDIDO':
             return produce(state, draft => {
-                state = inicial_state
+                draft.preco = 0,
+                draft.pizzas =  {},
+                draft.pizzas_ids =[],
+                draft.pizzas_customizadas = {},
+                draft.bebidas =  [],
+                draft.pedido_ativo = false
             })
             
 //         case 'CANCELAR_PEDIDO':
